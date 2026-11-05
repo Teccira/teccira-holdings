@@ -1,0 +1,2064 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | TECCIRA HOLDINGS - Unlimited Plug</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        :root {
+            --navy: #071a34;
+            --blue: #2865f5;
+            --ink: #0c1c36;
+            --muted: #526783;
+            --pale: #f5f8fc;
+            --white: #ffffff;
+            --border: #dce5ef;
+            --shadow: 0 10px 25px rgba(7, 26, 52, 0.08);
+            --shadow-hover: 0 18px 35px rgba(40, 101, 245, 0.15);
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: Inter, Arial, sans-serif;
+            background: var(--pale);
+            color: var(--ink);
+            line-height: 1.6;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        header {
+            min-height: 68px;
+            background: #07172e;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 4.1%;
+            gap: 24px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            min-width: 235px;
+        }
+        .mark {
+            font-size: 42px;
+            font-weight: 800;
+            color: #38a0ff;
+            text-shadow: 2px 2px #743eff;
+        }
+        .brandname {
+            font-size: 25px;
+            letter-spacing: 4px;
+            font-weight: 800;
+        }
+        .brandsub {
+            font-size: 10px;
+            letter-spacing: 6px;
+            text-align: center;
+            margin-top: 4px;
+        }
+        .menu-toggle {
+            display: none;
+            color: white;
+            background: transparent;
+            border: 0;
+            font-size: 23px;
+            cursor: pointer;
+        }
+        .nav {
+            display: flex;
+            gap: 28px;
+            align-items: center;
+            height: 45px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .nav a {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+            transition: color 0.2s;
+        }
+        .nav a:hover, .nav .active {
+            color: #64a5ff;
+        }
+        .nav .active:after {
+            content: "";
+            height: 3px;
+            background: #3985ff;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            border-radius: 2px;
+        }
+        .actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            font-size: 14px;
+            white-space: nowrap;
+        }
+        .icon {
+            color: white;
+            background: none;
+            border: 0;
+            font-size: 21px;
+            cursor: pointer;
+            position: relative;
+            transition: color 0.2s;
+        }
+        .icon:hover {
+            color: #64a5ff;
+        }
+        .count {
+            position: absolute;
+            right: -9px;
+            top: -8px;
+            background: var(--blue);
+            border-radius: 50%;
+            font-size: 10px;
+            padding: 4px 6px;
+            font-weight: 700;
+        }
+        .signup {
+            background: var(--blue);
+            color: white;
+            padding: 10px 22px;
+            border-radius: 25px;
+            font-weight: 700;
+            transition: background 0.2s, transform 0.2s;
+        }
+        .signup:hover {
+            background: #174ed1;
+            transform: translateY(-1px);
+        }
+        .account-wrap { position: relative; }
+        .account-dropdown {
+            display: none;
+            position: absolute;
+            top: calc(100% + 10px);
+            right: 0;
+            width: 230px;
+            padding: 14px;
+            background: #ffffff;
+            color: var(--ink);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            box-shadow: 0 12px 30px rgba(7,26,52,.18);
+            z-index: 1500;
+        }
+        .account-dropdown.open { display: block; }
+        .account-dropdown strong { display:block; font-size:13px; overflow-wrap:anywhere; }
+        .account-dropdown small { display:block; color:var(--muted); margin-top:4px; overflow-wrap:anywhere; }
+        .account-dropdown button {
+            width:100%; margin-top:12px; padding:9px 12px; border:0; border-radius:8px;
+            background:#eef4ff; color:#174ed1; font-weight:700; cursor:pointer;
+        }
+        .account-dropdown button:hover { background:#dce9ff; }
+        @media (max-width: 600px) {
+            .account-dropdown { right:0; width:min(230px, 80vw); }
+        }
+        .hero {
+            min-height: 360px;
+            color: white;
+            display: flex;
+            align-items: center;
+            padding: 45px 4.1%;
+            background: linear-gradient(90deg, rgba(3,15,30,.96), rgba(3,15,30,.78) 42%, rgba(3,15,30,.05)), url('background.png') center/cover no-repeat;
+        }
+        .hero-content {
+            max-width: 720px;
+        }
+        .eyebrow {
+            font-size: 12px;
+            letter-spacing: 3px;
+            color: #72c0ff;
+            font-weight: 800;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+        .hero h1 {
+            font-size: clamp(36px, 4.2vw, 50px);
+            margin-bottom: 14px;
+            font-weight: 800;
+        }
+        .hero p {
+            font-size: 16px;
+            line-height: 1.6;
+            max-width: 560px;
+            margin-bottom: 22px;
+            color: #cbd5e1;
+        }
+        .search {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: #fff;
+            color: #152a48;
+            border-radius: 35px;
+            padding: 6px 8px 6px 20px;
+            max-width: 650px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        .search input {
+            border: 0;
+            outline: 0;
+            min-width: 0;
+            flex: 1;
+            padding: 10px 0;
+            font-size: 14px;
+            font-family: inherit;
+        }
+        .search button {
+            background: var(--blue);
+            color: #fff;
+            border: 0;
+            border-radius: 30px;
+            padding: 12px 28px;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .search button:hover {
+            background: #174ed1;
+        }
+        .trust {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 28px;
+            font-size: 12px;
+            font-weight: 500;
+            color: #e2e8f0;
+        }
+        .trust span {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .trust i {
+            font-size: 18px;
+            color: #38a0ff;
+        }
+        .section {
+            padding: 40px 4.1% 0;
+            max-width: 1450px;
+            margin: 0 auto;
+        }
+        .heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: 15px;
+            margin-bottom: 24px;
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 12px;
+        }
+        .heading h2 {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--navy);
+            letter-spacing: -.5px;
+            margin-bottom: 4px;
+        }
+        .heading p {
+            font-size: 13px;
+            color: var(--muted);
+        }
+        .view {
+            font-size: 13px;
+            color: var(--blue);
+            font-weight: 700;
+            white-space: nowrap;
+            transition: color 0.2s;
+        }
+        .view:hover {
+            color: #174ed1;
+            text-decoration: underline;
+        }
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(9, minmax(0, 1fr));
+            gap: 14px;
+        }
+        .category {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            min-height: 145px;
+            padding: 15px 10px;
+            text-align: center;
+            transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+            display: block;
+            box-shadow: 0 4px 12px rgba(7, 26, 52, 0.03);
+        }
+        .category:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--blue);
+        }
+        .caticon {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            margin: 0 auto 10px;
+            display: grid;
+            place-items: center;
+            background: #dcecff;
+            border: 2px solid white;
+            color: #1761dc;
+            font-size: 20px;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.06);
+        }
+        .category h3 {
+            font-size: 12px;
+            margin-bottom: 5px;
+            color: var(--navy);
+            font-weight: 700;
+        }
+        .category p {
+            font-size: 10px;
+            color: var(--muted);
+            line-height: 1.3;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            line-clamp: 2;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+        .featured {
+            padding-top: 45px;
+            padding-bottom: 50px;
+        }
+        .products {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 22px;
+        }
+        .product {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+            box-shadow: var(--shadow);
+            transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        .product:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-hover);
+            border-color: #cbd5e1;
+        }
+        .photo {
+            height: 220px;
+            position: relative;
+            background: #e5edf7;
+            overflow: hidden;
+        }
+        .photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+        .product:hover .photo img {
+            transform: scale(1.05);
+        }
+        .badge {
+            position: absolute;
+            right: 12px;
+            bottom: 12px;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: white;
+            color: var(--blue);
+            display: grid;
+            place-items: center;
+            font-size: 14px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.18);
+            border: 2px solid var(--white);
+            z-index: 2;
+        }
+        .info {
+            padding: 14px 16px 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            background: var(--white);
+        }
+        .info h3 {
+            font-size: 14px;
+            font-weight: 800;
+            color: var(--navy);
+            line-height: 1.4;
+            min-height: 40px;
+            overflow-wrap: anywhere;
+        }
+        .type {
+            font-size: 11px;
+            color: var(--muted);
+            font-weight: 500;
+        }
+        .price-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 6px;
+            margin-bottom: 8px;
+        }
+        .price {
+            font-size: 14px;
+            font-weight: 800;
+            color: var(--blue);
+        }
+        .product-link {
+            border: 0;
+            background: var(--blue);
+            color: white;
+            border-radius: 8px;
+            padding: 10px;
+            font-size: 12px;
+            cursor: pointer;
+            text-align: center;
+            display: block;
+            font-weight: 700;
+            transition: background 0.2s, transform 0.1s;
+            width: 100%;
+        }
+        .product-link.service-btn {
+            background: var(--navy);
+        }
+        .product-link.service-btn:hover {
+            background: #102d54;
+        }
+        .product-link:hover {
+            background: #174ed1;
+        }
+
+        /* Purchase and checkout dialog (shared visual flow with the Shop page) */
+        .purchase-backdrop { position: fixed; inset: 0; background: rgba(7,26,52,.75); z-index: 2500; display: none; align-items: center; justify-content: center; padding: 18px; }
+        .purchase-backdrop.show { display: flex; }
+        .purchase-modal { background: #fff; color: var(--ink); border-radius: 16px; width: min(100%, 560px); padding: 25px; box-shadow: 0 20px 60px rgba(0,0,0,.3); max-height: 92vh; overflow-y: auto; }
+        .purchase-heading { display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:16px; padding-bottom:10px; border-bottom:1px solid var(--border); }
+        .purchase-heading h2 { color:var(--navy); font-size:20px; }
+        .purchase-close { border:0; background:none; font-size:27px; color:var(--muted); cursor:pointer; }
+        .purchase-form { display:grid; gap:12px; }
+        .purchase-form label { display:grid; gap:5px; color:var(--navy); font-size:12px; font-weight:700; }
+        .purchase-form input,.purchase-form select,.purchase-form textarea { width:100%; padding:10px 12px; border:1px solid var(--border); border-radius:8px; font:inherit; font-size:13px; color:var(--ink); }
+        .purchase-form textarea { resize:vertical; }
+        .purchase-form [hidden] { display:none !important; }
+        .purchase-note { background:#eef6ff; border:1px dashed var(--blue); padding:11px; border-radius:8px; color:var(--navy); font-size:11px; line-height:1.5; }
+        .purchase-breakdown { background:var(--pale); border:1px solid var(--border); border-radius:10px; padding:12px; display:grid; gap:6px; font-size:12px; }
+        .purchase-breakdown div { display:flex; justify-content:space-between; gap:10px; }
+        .purchase-breakdown .purchase-total { border-top:1px solid var(--border); padding-top:7px; color:var(--blue); font-weight:800; font-size:14px; }
+        .purchase-submit { border:0; border-radius:8px; padding:13px; background:var(--blue); color:white; font-weight:800; cursor:pointer; }
+        .purchase-submit:hover { background:#174ed1; }
+        @media(max-width:520px) { .purchase-modal { padding:17px; } }
+
+        .footer {
+            background: linear-gradient(105deg, #071a34, #0b2344);
+            color: white;
+            padding: 32px 4.1%;
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            min-height: 110px;
+            box-shadow: inset 0 4px 15px rgba(0,0,0,0.2);
+        }
+        .globe {
+            font-size: 40px;
+            color: #2d79ff;
+            min-width: 50px;
+        }
+        .footcopy {
+            flex: 1;
+        }
+        .footcopy h2 {
+            font-size: 18px;
+            margin-bottom: 6px;
+            font-weight: 700;
+        }
+        .footcopy p {
+            font-size: 12px;
+            line-height: 1.7;
+            max-width: 650px;
+            color: #cbd5e1;
+        }
+        .learn {
+            border: 1px solid #4c9bff;
+            border-radius: 24px;
+            padding: 12px 24px;
+            font-size: 12px;
+            white-space: nowrap;
+            color: white;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+        .learn:hover {
+            background: rgba(76, 155, 255, 0.15);
+            border-color: #64a5ff;
+        }
+        .toast {
+            display: none;
+            position: fixed;
+            right: 25px;
+            bottom: 25px;
+            background: var(--navy);
+            color: white;
+            padding: 14px 22px;
+            border-radius: 10px;
+            z-index: 1100;
+            font-size: 13px;
+            font-weight: 600;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* Shopping cart panel */
+        .cart-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(3, 15, 30, 0.65);
+            z-index: 2000;
+            padding: 20px;
+            align-items: center;
+            justify-content: center;
+        }
+        .cart-overlay.open {
+            display: flex;
+        }
+        .cart-panel {
+            background: #ffffff;
+            color: var(--ink);
+            width: min(680px, 100%);
+            max-height: 85vh;
+            overflow-y: auto;
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+        .cart-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border);
+        }
+        .cart-heading h2 {
+            color: var(--navy);
+            font-size: 23px;
+        }
+        .cart-close {
+            border: 0;
+            background: transparent;
+            color: var(--navy);
+            font-size: 25px;
+            cursor: pointer;
+            min-width: 40px;
+            min-height: 40px;
+        }
+        .cart-items {
+            display: grid;
+            gap: 12px;
+            padding: 18px 0;
+        }
+        .cart-item {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto auto;
+            align-items: center;
+            gap: 14px;
+            padding: 14px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .cart-item h3 {
+            color: var(--navy);
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+        .cart-item p {
+            color: var(--muted);
+            font-size: 12px;
+        }
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .quantity-controls button,
+        .remove-item {
+            border: 1px solid var(--border);
+            background: #f5f8fc;
+            color: var(--navy);
+            border-radius: 7px;
+            min-width: 34px;
+            min-height: 34px;
+            cursor: pointer;
+            font-weight: 700;
+        }
+        .remove-item {
+            color: #b42318;
+            padding: 0 9px;
+        }
+        .cart-summary {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            padding-top: 18px;
+            border-top: 2px solid var(--border);
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--navy);
+        }
+        .cart-empty {
+            padding: 25px 0;
+            color: var(--muted);
+            text-align: center;
+        }
+        @media(max-width: 520px) {
+            .cart-panel {
+                padding: 17px;
+            }
+            .cart-item {
+                grid-template-columns: minmax(0, 1fr) auto;
+                gap: 8px;
+            }
+            .remove-item {
+                grid-column: 2;
+                justify-self: end;
+            }
+        }
+
+        @media(max-width: 1400px) {
+            .categories {
+                grid-template-columns: repeat(5, minmax(0, 1fr));
+            }
+            .products {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+            header {
+                gap: 16px;
+            }
+            .nav {
+                gap: 18px;
+            }
+            .brandname {
+                font-size: 21px;
+                letter-spacing: 3px;
+            }
+        }
+        @media(max-width: 992px) {
+            .categories {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .products {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media(max-width: 720px) {
+            header {
+                padding: 12px 5%;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            .brand {
+                min-width: 0;
+                gap: 8px;
+            }
+            .mark {
+                font-size: 34px;
+            }
+            .brandname {
+                font-size: 18px;
+                letter-spacing: 2px;
+            }
+            .brandsub {
+                letter-spacing: 4px;
+            }
+            .menu-toggle {
+                display: block;
+                margin-left: auto;
+            }
+            .nav {
+                display: none;
+                order: 4;
+                width: 100%;
+                height: auto;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0;
+                padding: 8px 0;
+                font-size: 14px;
+            }
+            .nav.open {
+                display: flex;
+            }
+            .nav a {
+                min-height: 42px;
+                padding: 8px 4px;
+            }
+            .nav .active:after {
+                bottom: 0;
+                right: auto;
+                width: 45px;
+            }
+            .actions {
+                margin-left: 0;
+                gap: 12px;
+                font-size: 12px;
+            }
+            .signup {
+                padding: 8px 13px;
+            }
+            .hero {
+                min-height: 0;
+                padding: 38px 5%;
+            }
+            .hero h1 {
+                font-size: clamp(32px, 8vw, 44px);
+            }
+            .search {
+                gap: 8px;
+                padding-left: 14px;
+            }
+            .search button {
+                padding: 11px 16px;
+            }
+            .trust {
+                gap: 14px;
+            }
+            .section {
+                padding-left: 5%;
+                padding-right: 5%;
+            }
+            .heading {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+            .categories {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+            .products {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 12px;
+            }
+            .photo {
+                height: 160px;
+            }
+            .info {
+                padding: 12px;
+            }
+            .info h3 {
+                font-size: 13px;
+                min-height: 36px;
+            }
+            .price {
+                font-size: 12px;
+            }
+            .footer {
+                flex-direction: column;
+                text-align: center;
+            }
+            .globe {
+                display: none;
+            }
+        }
+        @media(max-width: 390px) {
+            .products {
+                grid-template-columns: 1fr;
+            }
+            .photo {
+                height: 210px;
+            }
+            .actions {
+                width: 100%;
+                justify-content: flex-end;
+            }
+        }
+
+
+        /* Service request form displayed directly on the homepage */
+        .service-modal-backdrop {
+            position: fixed;
+            inset: 0;
+            background: rgba(7, 26, 52, 0.78);
+            z-index: 2500;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 18px;
+        }
+        .service-modal-backdrop.show { display: flex; }
+        .service-request-modal {
+            background: #fff;
+            color: var(--ink);
+            width: min(100%, 520px);
+            max-height: 88vh;
+            overflow-y: auto;
+            border-radius: 16px;
+            padding: 25px;
+            box-shadow: 0 20px 60px rgba(0,0,0,.3);
+        }
+        .service-modal-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 18px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border);
+        }
+        .service-modal-heading h2 { color: var(--navy); font-size: 20px; }
+        .service-modal-close {
+            border: 0;
+            background: transparent;
+            color: var(--muted);
+            font-size: 28px;
+            cursor: pointer;
+            line-height: 1;
+        }
+        .service-request-form { display: grid; gap: 13px; }
+        .service-request-form label {
+            display: grid;
+            gap: 5px;
+            color: var(--navy);
+            font-size: 12px;
+            font-weight: 700;
+        }
+        .service-request-form input,
+        .service-request-form textarea,
+        .service-request-form select {
+            width: 100%;
+            padding: 11px 12px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font: inherit;
+            font-size: 13px;
+            outline: none;
+        }
+        .service-request-form input:focus,
+        .service-request-form textarea:focus,
+        .service-request-form select:focus { border-color: var(--blue); }
+        .service-request-submit {
+            border: 0;
+            border-radius: 9px;
+            padding: 13px;
+            color: #fff;
+            background: #0d8b57;
+            font-weight: 800;
+            cursor: pointer;
+        }
+        .service-request-submit:hover { background: #087447; }
+        @media(max-width: 520px) {
+            .service-request-modal { padding: 18px; }
+        }
+
+    
+/* Payment proof attachment */
+.proof-upload-box{background:#f5f8fc;border:1px dashed #2865f5;border-radius:10px;padding:13px;margin:12px 0;color:#263b59}
+.proof-upload-box input{width:100%;margin-top:8px}
+.proof-help{display:block;font-size:12px;color:#526783;margin-top:5px;line-height:1.5}
+.proof-preview{display:none;max-width:100%;max-height:190px;margin-top:10px;border-radius:8px;border:1px solid #dce5ef;object-fit:contain}
+.payment-account-list{margin:8px 0 0;padding-left:18px}
+.payment-account-list li{margin:4px 0}
+
+</style>
+</head>
+<body>
+
+<header>
+    <div class="brand">
+        <div class="mark">T</div>
+        <div>
+            <div class="brandname">TECCIRA</div>
+            <div class="brandsub">HOLDINGS</div>
+        </div>
+    </div>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open navigation menu" aria-expanded="false">
+        <i class="fa-solid fa-bars"></i>
+    </button>
+    <nav class="nav" id="mainNav" aria-label="Main navigation">
+        <a href="index.html" class="active"><i class="fa-solid fa-house"></i> Home</a>
+        <a href="shop.html"><i class="fa-solid fa-shop"></i> Shop</a>
+        <a href="services.html"><i class="fa-solid fa-briefcase"></i> Services</a>
+        <a href="about.html"><i class="fa-solid fa-circle-info"></i> About Us</a>
+        <a href="contact.html"><i class="fa-solid fa-envelope"></i> Contact</a>
+    </nav>
+    <div class="actions">
+        <button class="icon" aria-label="Search" onclick="document.getElementById('searchInput').focus()">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+        <button class="icon" id="cartButton" aria-label="View cart" type="button">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span class="count" id="cartCount">0</span>
+        </button>
+        <a class="login" id="loginLink" href="login.html">Login</a>
+        <div class="account-wrap" id="accountWrap">
+            <a class="signup" id="accountButton" href="signup.html">Sign Up</a>
+            <div class="account-dropdown" id="accountDropdown" aria-live="polite">
+                <strong id="accountDisplayName">Account</strong>
+                <small id="accountDisplayEmail"></small>
+                <button type="button" id="logoutButton">Log Out</button>
+            </div>
+        </div>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="hero-content">
+        <div class="eyebrow">WELCOME TO TECCIRA HOLDINGS</div>
+        <h1>Unlimited Plug</h1>
+        <p>Discover electronics, industrial safety gear, drawing tools, home appliances, sports apparel, everyday accessories and useful services — all in one place.</p>
+        <form class="search" id="searchForm">
+            <i class="fa-solid fa-magnifying-glass" style="color: var(--muted); font-size: 16px;"></i>
+            <input id="searchInput" type="search" placeholder="Search products, tote bags, earpods, software repair, electronics fixing, services..." aria-label="Search products and services">
+            <button type="submit">Search</button>
+        </form>
+        <div class="trust">
+            <span><i class="fa-solid fa-globe"></i>Global Access</span>
+            <span><i class="fa-solid fa-shield-halved"></i>Secure Payments</span>
+            <span><i class="fa-solid fa-truck"></i>Fast &amp; Reliable</span>
+            <span><i class="fa-solid fa-headset"></i>Customer Support</span>
+        </div>
+    </div>
+</section>
+
+<!-- Categories Section -->
+<section class="section">
+    <div class="heading">
+        <div>
+            <h2>Browse Categories</h2>
+            <p>Explore our wide array of specialized products, accessories, and reliable services.</p>
+        </div>
+        <a class="view" href="shop.html">View All Products &nbsp;&rarr;</a>
+    </div>
+    <div class="categories">
+        <a class="category" href="shop.html#electronics">
+            <div class="caticon"><i class="fa-solid fa-mobile-screen-button"></i></div>
+            <h3>Electronics &amp; Accessories</h3>
+            <p>Chargers, EarPods, Beats, cables and more.</p>
+        </a>
+        <a class="category" href="shop.html#safety">
+            <div class="caticon"><i class="fa-solid fa-helmet-safety"></i></div>
+            <h3>Industrial Safety Gear</h3>
+            <p>Safety boots, helmets, lab coats and work suits.</p>
+        </a>
+        <a class="category" href="shop.html#drawing">
+            <div class="caticon"><i class="fa-solid fa-ruler-combined"></i></div>
+            <h3>Drawing &amp; Drafting Tools</h3>
+            <p>Drawing sets, rulers and technical tools.</p>
+        </a>
+        <a class="category" href="shop.html#appliances">
+            <div class="caticon"><i class="fa-solid fa-blender"></i></div>
+            <h3>Home Appliances</h3>
+            <p>Hot plates, electric kettles and home essentials.</p>
+        </a>
+        <a class="category" href="shop.html#jerseys">
+            <div class="caticon"><i class="fa-solid fa-shirt"></i></div>
+            <h3>Sports &amp; Apparel</h3>
+            <p>Club jerseys, national jerseys and clothing.</p>
+        </a>
+        <a class="category" href="shop.html#accessories">
+            <div class="caticon"><i class="fa-solid fa-bag-shopping"></i></div>
+            <h3>General Accessories</h3>
+            <p>Tote bags, calculators and everyday accessories.</p>
+        </a>
+        <a class="category" href="services.html#service-money-swap">
+            <div class="caticon"><i class="fa-solid fa-money-bill-transfer"></i></div>
+            <h3>Money Swap &amp; Online Services</h3>
+            <p>Money swap, data and online assistance.</p>
+        </a>
+        <a class="category" href="services.html#service-electronic-repair">
+            <div class="caticon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+            <h3>Electronic Repairing</h3>
+            <p>Phone, computer and electronic diagnostics.</p>
+        </a>
+        <a class="category" href="services.html#service-customisation">
+            <div class="caticon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+            <h3>Phone &amp; PC Customisation</h3>
+            <p>Phone wrapping, PC skins and customisation.</p>
+        </a>
+        <a class="category" href="services.html#service-printing">
+            <div class="caticon"><i class="fa-solid fa-print"></i></div>
+            <h3>Printing &amp; Technical Services</h3>
+            <p>Printing, software setup and technical support.</p>
+        </a>
+        <a class="category" href="services.html#service-hostel-booking">
+            <div class="caticon"><i class="fa-solid fa-bed"></i></div>
+            <h3>Hostel Booking</h3>
+            <p>Accommodation and room booking assistance.</p>
+        </a>
+    </div>
+</section>
+
+<!-- Featured Products & Services Section -->
+<section class="section featured">
+    <div class="heading">
+        <div>
+            <h2>Featured Stock &amp; Services</h2>
+            <p>Explore featured products and services. Prices and stock should be confirmed before purchase.</p>
+        </div>
+        <div>
+            <a class="view" href="shop.html" style="margin-right: 15px;">Shop Products &nbsp;&rarr;</a>
+            <a class="view" href="services.html">View Services &nbsp;&rarr;</a>
+        </div>
+    </div>
+    <div class="products" id="products">
+
+        <!-- 1. National Jerseys -->
+        <article class="product" data-search="sports replica jerseys football kits soccer national team jerseys shirt">
+            <div class="photo">
+                <img src="jersey.jpeg" alt="Sports & Replica Jerseys">
+                <span class="badge"><i class="fa-solid fa-shirt"></i></span>
+            </div>
+            <div class="info">
+                <h3>National Jerseys</h3>
+                <p class="type">Apparel & Kits</p>
+                <div class="price-row">
+                    <span class="price">MWK 30,000</span>
+                </div>
+                <button class="product-link" onclick="purchaseItem('National Jerseys', 'shop.html?item=national-jersey')">Purchase Product</button>
+            </div>
+        </article>
+
+        <!-- 2. Club Jerseys -->
+        <article class="product" data-search="sports replica jerseys football kits soccer club team jerseys shirt">
+            <div class="photo">
+                <img src="jersey-with-sir.jpeg" alt="Sports & Replica Jerseys">
+                <span class="badge"><i class="fa-solid fa-shirt"></i></span>
+            </div>
+            <div class="info">
+                <h3>Club Jerseys</h3>
+                <p class="type">Apparel & Kits</p>
+                <div class="price-row">
+                    <span class="price">MWK 30,000</span>
+                </div>
+                <button class="product-link" onclick="purchaseItem('Club Jerseys', 'shop.html?item=club-jersey')">Purchase Product</button>
+            </div>
+        </article>
+
+        <!-- 3. Industrial Safety Boots -->
+        <article class="product" data-search="industrial safety boots footwear protection">
+            <div class="photo">
+                <img src="boots.jpeg" alt="Industrial Safety Boots">
+                <span class="badge"><i class="fa-solid fa-shoe-prints"></i></span>
+            </div>
+            <div class="info">
+                <h3>Industrial Safety Boots</h3>
+                <p class="type">Safety Gear</p>
+                <div class="price-row">
+                    <span class="price">MWK 75,000</span>
+                </div>
+                <button class="product-link" onclick="purchaseItem('Industrial Safety Boots', 'shop.html?item=safety-boots')">Purchase Product</button>
+            </div>
+        </article>
+
+        <!-- 4. Laboratory Coats -->
+        <article class="product" data-search="lab coats medical laboratory protective wear">
+            <div class="photo">
+                <img src="labcoats.jpeg" alt="Lab Coats">
+                <span class="badge"><i class="fa-solid fa-flask"></i></span>
+            </div>
+            <div class="info">
+                <h3>Laboratory Coats</h3>
+                <p class="type">Safety Wear</p>
+                <div class="price-row">
+                    <span class="price">MWK 30,000</span>
+                </div>
+                <button class="product-link" onclick="purchaseItem('Laboratory Coats', 'shop.html?item=lab-coats')">Purchase Product</button>
+            </div>
+        </article>
+
+        <!-- 5. Earpods & Beats -->
+        <article class="product" data-search="wireless earpods beats bluetooth headphones audio gadgets accessories">
+            <div class="photo">
+                <img src="p9.jpeg" alt="Earpods / Beats">
+                <span class="badge"><i class="fa-solid fa-headphones"></i></span>
+            </div>
+            <div class="info">
+                <h3>Earpods / Beats</h3>
+                <p class="type">Accessories</p>
+                <div class="price-row">
+                    <span class="price">MWK 18,500/45,000</span>
+                </div>
+                <button class="product-link" onclick="purchaseItem('Earpods / Beats', 'shop.html?item=earpods-beats')">Purchase Product</button>
+            </div>
+        </article>
+
+        <!-- 6. Tote Bags -->
+        <article class="product" data-search="tote bags accessories carrier bags fashion">
+            <div class="photo">
+                <img src="tote.jpeg" alt="Tote Bags">
+                <span class="badge"><i class="fa-solid fa-bag-shopping"></i></span>
+            </div>
+            <div class="info">
+                <h3>Tote Bags</h3>
+                <p class="type">Accessories</p>
+                <div class="price-row">
+                    <span class="price">MWK 13,000</span>
+                </div>
+                <button class="product-link" onclick="purchaseItem('Tote Bag', 'shop.html?item=tote-bag')">Purchase Product</button>
+            </div>
+        </article>
+
+        <!-- 7. Electric Kettles -->
+        <article class="product" data-search="electric kettles kitchen appliances boiling">
+            <div class="photo">
+                <img src="kettels.jpeg" alt="Electric Kettles">
+                <span class="badge"><i class="fa-solid fa-mug-hot"></i></span>
+            </div>
+            <div class="info">
+                <h3>Electric Kettles</h3>
+                <p class="type">Appliances</p>
+                <div class="price-row">
+                    <span class="price">MWK 35,000</span>
+                </div>
+                <button class="product-link" onclick="purchaseItem('Electric Kettle', 'shop.html?item=electric-kettle')">Purchase Product</button>
+            </div>
+        </article>
+
+        <!-- 8. Scientific Calculators -->
+        <article class="product" data-search="scientific calculators accessories tools mathematics">
+            <div class="photo">
+                <img src="casio.jpeg" alt="Scientific Calculators">
+                <span class="badge"><i class="fa-solid fa-calculator"></i></span>
+            </div>
+            <div class="info">
+                <h3>Scientific Calculators</h3>
+                <p class="type">Accessories</p>
+                <div class="price-row">
+                    <span class="price">MWK 60,000</span>
+                </div>
+                <button class="product-link" onclick="purchaseItem('Scientific Calculator', 'shop.html?item=scientific-calculator')">Purchase Product</button>
+            </div>
+        </article>
+
+        <!-- 9. Reflectors & Work Suits -->
+        <article class="product" data-search="reflectors work suits safety gear high visibility">
+            <div class="photo">
+                <img src="reflector.jpeg" alt="Reflectors and Work Suits">
+                <span class="badge"><i class="fa-solid fa-vest"></i></span>
+            </div>
+            <div class="info">
+                <h3>Reflectors & Work Suits</h3>
+                <p class="type">Safety Gear</p>
+                <div class="price-row">
+                    <span class="price">MWK 14,000/45,000</span>
+                </div>
+                <button class="product-link" onclick="purchaseItem('Reflectors & Work Suits', 'shop.html?item=work-suits')">Purchase Product</button>
+            </div>
+        </article>
+
+        <!-- 10. Sox & Bathing Gloves -->
+        <article class="product" data-search="sox bathing gloves others miscellaneous">
+            <div class="photo">
+                <img src="gloves.jpeg" alt="Sox and Bathing Gloves">
+                <span class="badge"><i class="fa-solid fa-socks"></i></span>
+            </div>
+            <div class="info">
+                <h3>Sox & Bathing Gloves</h3>
+                <p class="type">Others</p>
+                <div class="price-row">
+                    <span class="price">MWK 4,500</span>
+                </div>
+                <button class="product-link" onclick="purchaseItem('Sox & Bathing Gloves', 'shop.html?item=sox-gloves')">Purchase Product</button>
+            </div>
+        </article>
+
+        <!-- 11. Boxers -->
+        <article class="product" data-search="boxers underwear apparel clothing others">
+            <div class="photo">
+                <img src="boxer.jpeg" alt="Boxers">
+                <span class="badge"><i class="fa-solid fa-shirt"></i></span>
+            </div>
+            <div class="info">
+                <h3>Boxers (Men's Apparel)</h3>
+                <p class="type">Others</p>
+                <div class="price-row">
+                    <span class="price">MWK 5,000</span>
+                </div>
+                <button class="product-link" onclick="purchaseItem('Boxers', 'shop.html?item=boxers')">Purchase Product</button>
+            </div>
+        </article>
+
+        <!-- 12. Phone Chargers -->
+        <article class="product" data-search="phone chargers usb c fast charger adapter electronics accessories">
+            <div class="photo">
+                <img src="charger.jpeg" alt="Phone charger and charging cable">
+                <span class="badge"><i class="fa-solid fa-plug"></i></span>
+            </div>
+            <div class="info">
+                <h3>Phone Chargers</h3>
+                <p class="type">Electronics &amp; Accessories</p>
+                <div class="price-row">
+                    <span class="price">MWK 30,000</span>
+                </div>
+                <button class="product-link" onclick="purchaseItem('Phone Chargers', 'shop.html?item=phone-chargers')">Purchase Product</button>
+            </div>
+        </article>
+
+        <!-- 13. Data Transfer Cables -->
+        <article class="product" data-search="data transfer cables usb cable type c charging cable electronics">
+            <div class="photo">
+                <img src="charger.jpeg" alt="USB and data transfer cables">
+                <span class="badge"><i class="fa-solid fa-link"></i></span>
+            </div>
+            <div class="info">
+                <h3>Data Transfer Cables</h3>
+                <p class="type">Electronics &amp; Accessories</p>
+                <div class="price-row">
+                    <span class="price">MWK 15,000</span>
+                </div>
+                <button class="product-link" onclick="purchaseItem('Data Transfer Cables', 'shop.html?item=data-cables')">Purchase Product</button>
+            </div>
+        </article>
+
+        <!-- 14. Electric Hot Plates -->
+        <article class="product" data-search="electric hot plates cooking home appliances kitchen">
+            <div class="photo">
+                <img src="HOTPLATE - Copy - Copy.jpeg" alt="Kitchen appliances and cooking equipment">
+                <span class="badge"><i class="fa-solid fa-fire-burner"></i></span>
+            </div>
+            <div class="info">
+                <h3>Electric Hot Plates</h3>
+                <p class="type">Home Appliances</p>
+                <div class="price-row">
+                    <span class="price">MWK 15,000</span>
+                </div>
+                <button class="product-link" onclick="purchaseItem('Electric Hot Plates', 'shop.html?item=hot-plates')">Purchase Product</button>
+            </div>
+        </article>
+
+        <!-- 15. Safety Helmets -->
+        <article class="product" data-search="industrial safety helmets hard hats head protection safety gear">
+            <div class="photo">
+                <img src="safety.jpeg" alt="Construction and industrial safety equipment">
+                <span class="badge"><i class="fa-solid fa-helmet-safety"></i></span>
+            </div>
+            <div class="info">
+                <h3>Industrial Safety Helmets</h3>
+                <p class="type">Industrial Safety Gear</p>
+                <div class="price-row">
+                    <span class="price">MWK 20,000</span>
+                </div>
+                <button class="product-link" onclick="purchaseItem('Industrial Safety Helmets', 'shop.html?item=safety-helmets')">Purchase Product</button>
+            </div>
+        </article>
+
+        <!-- 16. Drawing and Drafting Sets -->
+        <article class="product" data-search="drawing drafting sets technical drawing ruler geometry engineering tools">
+            <div class="photo">
+                <img src="drawing-tools.jpeg" alt="Drawing and drafting tools">
+                <span class="badge"><i class="fa-solid fa-ruler-combined"></i></span>
+            </div>
+            <div class="info">
+                <h3>Drawing &amp; Drafting Tools</h3>
+                <p class="type">Technical Tools</p>
+                <div class="price-row">
+                    <span class="price">Contact for Price</span>
+                </div>
+                <button class="product-link" onclick="purchaseItem('Drawing & Drafting Tools', 'shop.html?item=drawing-tools')">Purchase Product</button>
+            </div>
+        </article>
+
+        <!-- 17. Printing Services -->
+        <article class="product" data-search="printing services documents jerseys shirts customized skins flyers project work">
+            <div class="photo">
+                <img src="printings.jpeg" alt="Printing Services">
+                <span class="badge"><i class="fa-solid fa-print"></i></span>
+            </div>
+            <div class="info">
+                <h3>Printing Services</h3>
+                <p class="type">Digital & Custom Service</p>
+                <div class="price-row">
+                    <span class="price">MWK 200 Per Page </span>
+                </div>
+                <button class="product-link service-btn" onclick="accessService('Printing Services', 'services.html#printing')">Access Service</button>
+            </div>
+        </article>
+
+        <!-- Software Troubleshooting & OS Setup -->
+        <article class="product" data-search="software troubleshooting os setup bootloader errors fastboot recovery drivers installation virus cleanup">
+            <div class="photo">
+                <img src="computer-resonse - Copy.jpeg" alt="Software Troubleshooting">
+                <span class="badge"><i class="fa-solid fa-laptop-code"></i></span>
+            </div>
+            <div class="info">
+                <h3>Software Troubleshooting</h3>
+                <p class="type">IT & Technical Support</p>
+                <div class="price-row">
+                    <span class="price">Diagnostic Quote</span>
+                </div>
+                <button class="product-link service-btn" onclick="accessService('Software Troubleshooting', 'services.html#software-support')">Access Service</button>
+            </div>
+        </article>
+
+        <!-- Electronic Repair & Circuit Fix -->
+        <article class="product" data-search="electronic repair circuit fixing soldering phone fixing motherboard diagnostic components hardware">
+            <div class="photo">
+                <img src="repairings.jpeg" alt="Electronic Repair">
+                <span class="badge"><i class="fa-solid fa-microchip"></i></span>
+            </div>
+            <div class="info">
+                <h3>Electronic Repair & Hardware</h3>
+                <p class="type">Hardware Diagnostics</p>
+                <div class="price-row">
+                    <span class="price">Inspection Quote</span>
+                </div>
+                <button class="product-link service-btn" onclick="accessService('Electronic Repair & Hardware', 'services.html#electronic-repair')">Access Service</button>
+            </div>
+        </article>
+
+        <!-- Phone & PC Wrapping Service -->
+        <article class="product" data-search="phone pc wrapping skins customisation vinyl stickers">
+            <div class="photo">
+                <img src="pc-wrapping.jpeg" alt="Phone and PC Wrapping">
+                <span class="badge"><i class="fa-solid fa-wand-magic-sparkles"></i></span>
+            </div>
+            <div class="info">
+                <h3>Phone & PC Skins</h3>
+                <p class="type">Customisation Service</p>
+                <div class="price-row">
+                    <span class="price">Custom Quote</span>
+                </div>
+                <button class="product-link service-btn" onclick="accessService('Phone & PC Skins', 'services.html#customisation')">Access Service</button>
+            </div>
+        </article>
+
+        <!-- Money Swap & Data Service -->
+        <article class="product" data-search="money swap online services airtime data bundles recharge">
+            <div class="photo">
+                <img src="swap.png" alt="Money Swap Services">
+                <span class="badge"><i class="fa-solid fa-money-bill-transfer"></i></span>
+            </div>
+            <div class="info">
+                <h3>Money Swap &amp; Data</h3>
+                <p class="type">Digital Service</p>
+                <div class="price-row">
+                    <span class="price">Instant Swap</span>
+                </div>
+                <button class="product-link service-btn" onclick="accessService('Money Swap & Data', 'services.html#money-swap')">Access Service</button>
+            </div>
+        </article>
+
+        <!-- Hostel Booking Service -->
+        <article class="product" data-search="hostel booking accommodation student rooms">
+            <div class="photo">
+                <img src="hostel.png" alt="Hostel Booking">
+                <span class="badge"><i class="fa-solid fa-bed"></i></span>
+            </div>
+            <div class="info">
+                <h3>Hostel & Room Booking</h3>
+                <p class="type">Accommodation Service</p>
+                <div class="price-row">
+                    <span class="price">Free Consultation</span>
+                </div>
+                <button class="product-link service-btn" onclick="accessService('Hostel Booking', 'services.html#hostel-booking')">Access Service</button>
+            </div>
+        </article>
+
+    </div>
+</section>
+
+
+<!-- Service Request Form: opens on this homepage when a visitor selects Access Service -->
+<div class="service-modal-backdrop" id="serviceRequestModal" aria-hidden="true">
+    <section class="service-request-modal" role="dialog" aria-modal="true" aria-labelledby="serviceRequestTitle">
+        <div class="service-modal-heading">
+            <h2 id="serviceRequestTitle">Service Booking Request</h2>
+            <button type="button" class="service-modal-close" onclick="closeServiceRequest()" aria-label="Close form">&times;</button>
+        </div>
+        <form class="service-request-form" id="homepageServiceForm">
+            <label>Selected Service
+                <input type="text" id="homepageServiceName" readonly required>
+            </label>
+            <label>Full Name
+                <input type="text" id="homepageClientName" placeholder="Enter your full name" autocomplete="name" required>
+            </label>
+            <label>Primary Phone Number
+                <input type="tel" id="homepageClientPhone" placeholder="e.g. 0994 459 888" autocomplete="tel" required>
+            </label>
+            <label>Alternative Phone Number (optional)
+                <input type="tel" id="homepageClientAltPhone" placeholder="Another number we can reach you on">
+            </label>
+            <label>Specific Service Details &amp; Instructions
+                <textarea id="homepageClientNotes" rows="4" placeholder="Provide the details needed for this service..." required></textarea>
+            </label>
+            <div class="form-section-title">Where and when do you need the service?</div>
+            <label>Service Location / District
+                <input type="text" id="homepageServiceLocation" placeholder="District, city or campus" required>
+            </label>
+            <label>Area / Township / Campus
+                <input type="text" id="homepageServiceArea" placeholder="Area, township or campus" required>
+            </label>
+            <label>Street, building or nearby landmark (optional)
+                <input type="text" id="homepageServiceLandmark" placeholder="A clear landmark or meeting point">
+            </label>
+            <label>Preferred Date (optional)
+                <input type="date" id="homepageServiceDate">
+            </label>
+            <label>Preferred Time
+                <select id="homepageServiceTime"><option value="">Flexible / discuss with me</option><option>Morning</option><option>Afternoon</option><option>Evening</option></select>
+            </label>
+            <label>Additional Instructions (optional)
+                <textarea id="homepageServiceExtraNotes" rows="2" placeholder="Anything else we should know? Do not include PINs or passwords."></textarea>
+            </label>
+            <button class="service-request-submit" type="submit">Submit Service Request</button>
+        </form>
+    </section>
+</div>
+
+<footer class="footer">
+    <div class="globe"><i class="fa-solid fa-globe"></i></div>
+    <div class="footcopy">
+        <h2>More Than Just a Store</h2>
+        <p>TECCIRA HOLDINGS connects you to a world of possibilities — high-quality safety gear, sports jerseys, accessories, appliances, electronic & software repairs, and essential digital services, all in one trusted platform.</p>
+    </div>
+    <a class="learn" href="about.html">Learn More &nbsp;&rarr;</a>
+    <div class="globe"><i class="fa-solid fa-earth-africa"></i></div>
+</footer>
+
+<div class="toast" id="toastBox" role="status" aria-live="polite"></div>
+
+
+<!-- Purchase Item Dialog: same checkout flow as the Shop page -->
+<div class="purchase-backdrop" id="purchaseModal" role="dialog" aria-modal="true" aria-labelledby="purchaseTitle">
+    <section class="purchase-modal">
+        <div class="purchase-heading">
+            <h2 id="purchaseTitle">Purchase &amp; Checkout</h2>
+            <button class="purchase-close" type="button" onclick="closePurchaseModal()" aria-label="Close purchase form">&times;</button>
+        </div>
+        <form class="purchase-form" id="purchaseForm">
+            <label>Selected Item<input type="text" id="purchaseProduct" readonly required></label>
+            <label id="purchaseSizeGroup" hidden>Select Size
+                <select id="purchaseSize"><option value="S">Small (S)</option><option value="M" selected>Medium (M)</option><option value="L">Large (L)</option><option value="XL">Extra Large (XL)</option><option value="XXL">Double Extra Large (XXL)</option></select>
+            </label>
+            <label>Full Name<input type="text" id="purchaseCustomerName" placeholder="Enter your full name" autocomplete="name" required></label>
+            <label>Phone Number<input type="tel" id="purchaseCustomerPhone" placeholder="e.g. 0994 459 888" autocomplete="tel" required></label>
+            <label>Product Custom Specifications (colour, print details, name/number)<textarea id="purchaseCustomSpecs" rows="2" placeholder="Describe any specific details you prefer..."></textarea></label>
+            <label>Delivery Method<select id="purchaseDeliveryMethod" required><option value="pickup">Self-Collection — Free</option><option value="delivery">Home / Campus / Office Delivery</option></select></label>
+            <div id="purchaseDeliveryFields" hidden>
+                <label>Destination District / City<select id="purchaseDistrict"><option value="">Choose district / city</option><option>Lilongwe</option><option>Blantyre</option><option>Mzuzu</option><option>Zomba</option><option>Kasungu</option><option>Salima</option><option>Mangochi</option><option>Nkhotakota</option><option>Karonga</option><option>Other district / town</option></select></label>
+                <label>Area / Township / Campus<input id="purchaseArea" type="text" placeholder="e.g. Chitawira, campus name"></label>
+                <label>Street, Building or Nearby Landmark<input id="purchaseAddress" type="text" placeholder="House number, building or nearby landmark"></label>
+                <label>Approximate Distance from TECCIRA Dispatch Point<select id="purchaseDistance"><option value="">Select distance range</option><option value="0-5">0–5 km — MWK 2,500</option><option value="6-10">6–10 km — MWK 5,000</option><option value="11-20">11–20 km — MWK 8,500</option><option value="21+">21 km and above — MWK 10,000</option></select></label>
+                <label>Preferred Delivery Time<select id="purchaseDeliveryTime"><option>Any available time</option><option>Morning</option><option>Afternoon</option><option>Evening</option></select></label>
+                <label>Alternative Contact Number (optional)<input type="tel" id="purchaseAltPhone" placeholder="Alternative phone number"></label>
+                <label>Delivery Instructions (optional)<textarea id="purchaseInstructions" rows="2" placeholder="Directions or a convenient meeting point"></textarea></label>
+                <div class="purchase-note" id="purchaseDeliveryNote">Select a distance range to calculate the delivery fee.</div>
+            </div>
+            <label>Payment Method<select id="purchasePaymentMethod" required><option value="airtel">Airtel Money</option><option value="mpamba">TNM Mpamba</option><option value="bank">Bank Transfer (National Bank / FDH Bank)</option><option value="cod">Cash on Delivery</option></select></label>
+            <div class="purchase-note" id="purchasePaymentNote" aria-live="polite"></div>
+            <div class="proof-upload-box">
+                <label for="purchasePaymentProof"><strong>Attach Proof of Payment (screenshot)</strong></label>
+                <input type="file" id="purchasePaymentProof" accept="image/png,image/jpeg,image/webp">
+                <span class="proof-help">Upload a clear payment screenshot (PNG, JPG or WEBP; maximum 1.5 MB). Do not upload a screenshot containing your PIN or password. Cash on Delivery customers can leave this empty.</span>
+                <img id="purchaseProofPreview" class="proof-preview" alt="Payment proof preview">
+            </div>
+            <div class="purchase-breakdown"><div><span>Item Cost:</span><strong id="purchaseItemCost">MWK 0</strong></div><div><span>Delivery Fee:</span><strong id="purchaseDeliveryFee">MWK 0</strong></div><div class="purchase-total"><span>Total Payable:</span><strong id="purchaseTotal">MWK 0</strong></div></div>
+            <button class="purchase-submit" type="submit">Submit Order Request</button>
+        </form>
+    </section>
+</div>
+
+<div class="cart-overlay" id="cartOverlay" aria-hidden="true">
+    <section class="cart-panel" role="dialog" aria-modal="true" aria-labelledby="cartTitle">
+        <div class="cart-heading">
+            <h2 id="cartTitle"><i class="fa-solid fa-cart-shopping"></i> Your Shopping Cart</h2>
+            <button class="cart-close" id="closeCart" type="button" aria-label="Close cart">&times;</button>
+        </div>
+        <div class="cart-items" id="cartItemsList"></div>
+        <div class="cart-summary">
+            <span>Total amount</span>
+            <span id="cartTotal">MWK 0</span>
+        </div>
+    </section>
+</div>
+
+<script>
+let cartItems = JSON.parse(localStorage.getItem('tecciraCart') || '[]');
+let timer;
+
+// Make older saved cart entries compatible with the new cart format.
+cartItems = cartItems.map(item => ({
+    name: item.name,
+    price: Number(item.price) || 0,
+    quantity: Math.max(1, Number(item.quantity) || 1)
+}));
+
+function money(amount) {
+    return 'MWK ' + Number(amount).toLocaleString('en-US', {
+        maximumFractionDigits: 2
+    });
+}
+
+function saveCart() {
+    localStorage.setItem('tecciraCart', JSON.stringify(cartItems));
+    updateCartCount();
+    renderCart();
+}
+
+function updateCartCount() {
+    const count = document.getElementById('cartCount');
+    if (count) {
+        count.textContent = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+    }
+}
+
+function toast(msg) {
+    const box = document.getElementById('toastBox');
+    box.textContent = msg;
+    box.style.display = 'block';
+    clearTimeout(timer);
+    timer = setTimeout(() => box.style.display = 'none', 2800);
+}
+
+function getProductPrice(itemName) {
+    const cards = [...document.querySelectorAll('.product')];
+
+    // Some purchase button names are singular while their card headings are plural.
+    // Map those names so the correct featured product card and price can be found.
+    const headingAliases = {
+        'Tote Bag': 'Tote Bags',
+        'Electric Kettle': 'Electric Kettles',
+        'Scientific Calculator': 'Scientific Calculators',
+        'Boxers': "Boxers (Men's Apparel)"
+    };
+    const headingToFind = headingAliases[itemName] || itemName;
+
+    const card = cards.find(product => {
+        const heading = product.querySelector('h3');
+        return heading && heading.textContent.trim() === headingToFind;
+    });
+
+    if (!card) return null;
+    const priceText = card.querySelector('.price')?.textContent || '';
+    const match = priceText.replace(/,/g, '').match(/\d+(?:\.\d+)?/);
+    if (!match) return null;
+
+    // Items shown with two prices need the customer to choose the exact variant.
+    if (itemName === 'Earpods / Beats') {
+        const choice = prompt('Choose one: type Earpods (MWK 18,500) or Beats (MWK 45,000).');
+        if (!choice) return null;
+        if (choice.trim().toLowerCase() === 'earpods') {
+            return { name: 'Earpods', price: 18500 };
+        }
+        if (choice.trim().toLowerCase() === 'beats') {
+            return { name: 'Beats', price: 45000 };
+        }
+        toast('Please enter Earpods or Beats.');
+        return null;
+    }
+
+    if (itemName === 'Reflectors & Work Suits') {
+        const choice = prompt('Choose one: type Reflectors (MWK 14,000) or Work Suits (MWK 45,000).');
+        if (!choice) return null;
+        if (choice.trim().toLowerCase() === 'reflectors') {
+            return { name: 'Reflectors', price: 14000 };
+        }
+        if (choice.trim().toLowerCase() === 'work suits') {
+            return { name: 'Work Suits', price: 45000 };
+        }
+        toast('Please enter Reflectors or Work Suits.');
+        return null;
+    }
+
+    return { name: itemName, price: Number(match[0]) };
+}
+
+function purchaseItem(itemName, targetUrl) {
+    // Read the price from the featured product card and open the checkout dialog.
+    const selected = getProductPrice(itemName);
+    if (!selected) {
+        toast('This item is priced on request. Please contact TECCIRA to confirm the price.');
+        return;
+    }
+
+    document.getElementById('purchaseProduct').value = selected.name;
+    document.getElementById('purchaseSizeGroup').hidden = !/jersey/i.test(selected.name);
+    document.getElementById('purchaseForm').reset();
+    paymentProofData = '';
+    paymentProofPreview.removeAttribute('src');
+    paymentProofPreview.style.display = 'none';
+    document.getElementById('purchaseProduct').value = selected.name;
+    document.getElementById('purchaseSizeGroup').hidden = !/jersey/i.test(selected.name);
+    activePurchasePrice = selected.price;
+    document.getElementById('purchaseModal').classList.add('show');
+    calculatePurchaseTotal();
+    updatePurchasePaymentNote();
+}
+
+let activePurchasePrice = 0;
+
+function closePurchaseModal() {
+    document.getElementById('purchaseModal').classList.remove('show');
+}
+
+function calculatePurchaseTotal() {
+    const delivery = document.getElementById('purchaseDeliveryMethod').value === 'delivery';
+    const fields = document.getElementById('purchaseDeliveryFields');
+    fields.hidden = !delivery;
+    ['purchaseDistrict','purchaseArea','purchaseAddress','purchaseDistance'].forEach(id => {
+        document.getElementById(id).required = delivery;
+    });
+    const fees = {'0-5':2500,'6-10':5000,'11-20':8500,'21+':10000};
+    const distance = document.getElementById('purchaseDistance').value;
+    const deliveryFee = delivery ? (fees[distance] || 0) : 0;
+    document.getElementById('purchaseDeliveryNote').textContent = distance
+        ? 'Estimated delivery charge: ' + money(deliveryFee) + '. The delivery team will confirm the route before dispatch.'
+        : 'Select a distance range to calculate the delivery fee.';
+    document.getElementById('purchaseItemCost').textContent = money(activePurchasePrice);
+    document.getElementById('purchaseDeliveryFee').textContent = money(deliveryFee);
+    document.getElementById('purchaseTotal').textContent = money(activePurchasePrice + deliveryFee);
+}
+
+function updatePurchasePaymentNote() {
+    const method = document.getElementById('purchasePaymentMethod').value;
+    const notes = {
+        airtel: `<strong>Airtel Money:</strong><ul class="payment-account-list"><li>Number: <strong>10212994</strong></li><li>Account name: <strong>ANDREW MUSHANI</strong></li></ul><p>Attach your payment screenshot below after making the transfer.</p>`,
+        mpamba: `<strong>TNM Mpamba:</strong><ul class="payment-account-list"><li>Number: <strong>4229932</strong></li><li>Account name: <strong>MPHATSO GAUSI</strong></li></ul><p>Attach your payment screenshot below after making the transfer.</p>`,
+        bank: `<strong>Choose either bank account for your transfer:</strong><ul class="payment-account-list"><li><strong>National Bank</strong><br>Account: 1012202217<br>Account name: <strong>MR GAUSI</strong></li><li><strong>FDH Bank</strong><br>Account: 1620000242472<br>Account name: <strong>MR GAUSI</strong></li></ul><p>Attach your payment screenshot below after making the transfer.</p>`,
+        cod: '<strong>Cash on Delivery:</strong> Pay when the product is delivered and handed over. A payment screenshot is not required.'
+    };
+    document.getElementById('purchasePaymentNote').innerHTML = notes[method] || '';
+    const proofInput = document.getElementById('purchasePaymentProof');
+    proofInput.required = method !== 'cod';
+    document.querySelector('label[for="purchasePaymentProof"] strong').textContent = method === 'cod'
+        ? 'Attach Proof of Payment (optional for Cash on Delivery)'
+        : 'Attach Proof of Payment (screenshot) — required';
+}
+
+// Keep delivery totals and payment guidance updated when the customer changes selections.
+document.getElementById('purchaseDeliveryMethod').addEventListener('change', calculatePurchaseTotal);
+document.getElementById('purchaseDistance').addEventListener('change', calculatePurchaseTotal);
+document.getElementById('purchasePaymentMethod').addEventListener('change', updatePurchasePaymentNote);
+document.getElementById('purchaseModal').addEventListener('click', event => {
+    if (event.target.id === 'purchaseModal') closePurchaseModal();
+});
+document.addEventListener('keydown', event => {
+    if (event.key === 'Escape') closePurchaseModal();
+});
+
+const paymentProofInput = document.getElementById('purchasePaymentProof');
+const paymentProofPreview = document.getElementById('purchaseProofPreview');
+let paymentProofData = '';
+
+// Show the screenshot field only when the customer selects an online payment method.
+const purchaseProofBox = paymentProofInput.closest('.proof-upload-box');
+function updatePurchasePaymentUI() {
+    const isCashOnDelivery = document.getElementById('purchasePaymentMethod').value === 'cod';
+    purchaseProofBox.hidden = isCashOnDelivery;
+    paymentProofInput.required = !isCashOnDelivery;
+
+    // Remove any previously selected screenshot when switching to Cash on Delivery.
+    if (isCashOnDelivery) {
+        paymentProofInput.value = '';
+        paymentProofData = '';
+        paymentProofPreview.removeAttribute('src');
+        paymentProofPreview.style.display = 'none';
+    }
+}
+
+document.getElementById('purchasePaymentMethod').addEventListener('change', updatePurchasePaymentUI);
+updatePurchasePaymentUI();
+
+paymentProofInput.addEventListener('change', function() {
+    const file = this.files && this.files[0];
+    paymentProofData = '';
+    paymentProofPreview.removeAttribute('src');
+    paymentProofPreview.style.display = 'none';
+    if (!file) return;
+    if (!['image/png','image/jpeg','image/webp'].includes(file.type)) {
+        toast('Please choose a PNG, JPG or WEBP image.');
+        this.value = '';
+        return;
+    }
+    if (file.size > 1.5 * 1024 * 1024) {
+        toast('The screenshot is too large. Please use an image under 1.5 MB.');
+        this.value = '';
+        return;
+    }
+    const reader = new FileReader();
+    reader.onload = () => {
+        paymentProofData = String(reader.result || '');
+        paymentProofPreview.src = paymentProofData;
+        paymentProofPreview.style.display = 'block';
+    };
+    reader.onerror = () => toast('The screenshot could not be read. Please try another image.');
+    reader.readAsDataURL(file);
+});
+
+document.getElementById('purchaseForm').addEventListener('submit', event => {
+    event.preventDefault();
+    const delivery = document.getElementById('purchaseDeliveryMethod').value === 'delivery';
+    const paymentMethod = document.getElementById('purchasePaymentMethod').value;
+    if (paymentMethod !== 'cod' && !paymentProofData) {
+        toast('Please attach your payment screenshot before submitting the order.');
+        paymentProofInput.focus();
+        return;
+    }
+    if (delivery && !document.getElementById('purchaseDistance').value) {
+        toast('Please select a delivery distance to calculate the fee.');
+        document.getElementById('purchaseDistance').focus();
+        return;
+    }
+    const fees = {'0-5':2500,'6-10':5000,'11-20':8500,'21+':10000};
+    const deliveryFee = delivery ? (fees[document.getElementById('purchaseDistance').value] || 0) : 0;
+    const order = {
+        reference: 'TH-' + Date.now().toString().slice(-8),
+        customer: document.getElementById('purchaseCustomerName').value.trim(),
+        phone: document.getElementById('purchaseCustomerPhone').value.trim(),
+        item: document.getElementById('purchaseProduct').value,
+        size: document.getElementById('purchaseSizeGroup').hidden ? '' : document.getElementById('purchaseSize').value,
+        specifications: document.getElementById('purchaseCustomSpecs').value.trim(),
+        delivery: delivery ? {
+            district: document.getElementById('purchaseDistrict').value,
+            area: document.getElementById('purchaseArea').value.trim(),
+            address: document.getElementById('purchaseAddress').value.trim(),
+            distance: document.getElementById('purchaseDistance').value,
+            preferredTime: document.getElementById('purchaseDeliveryTime').value,
+            alternativePhone: document.getElementById('purchaseAltPhone').value.trim(),
+            instructions: document.getElementById('purchaseInstructions').value.trim()
+        } : {method:'Self-Collection'},
+        paymentMethod: document.getElementById('purchasePaymentMethod').value,
+        paymentProof: paymentProofData ? {
+            fileName: paymentProofInput.files[0]?.name || 'payment-proof',
+            imageData: paymentProofData
+        } : null,
+        itemCost: activePurchasePrice,
+        deliveryFee,
+        total: activePurchasePrice + deliveryFee,
+        createdAt: new Date().toISOString()
+    };
+    const orders = JSON.parse(localStorage.getItem('tecciraOrders') || '[]');
+    orders.push(order);
+    localStorage.setItem('tecciraOrders', JSON.stringify(orders));
+    closePurchaseModal();
+    toast('Order request ' + order.reference + ' saved on this device. TECCIRA will confirm the order and payment details.');
+});
+
+function renderCart() {
+    const list = document.getElementById('cartItemsList');
+    const totalDisplay = document.getElementById('cartTotal');
+    if (!list || !totalDisplay) return;
+
+    if (cartItems.length === 0) {
+        list.innerHTML = '<p class="cart-empty">Your cart is empty. Add a product to get started.</p>';
+        totalDisplay.textContent = money(0);
+        return;
+    }
+
+    list.innerHTML = cartItems.map((item, index) => `
+        <article class="cart-item">
+            <div>
+                <h3>${escapeHtml(item.name)}</h3>
+                <p>${money(item.price)} each</p>
+                <p>Subtotal: <strong>${money(item.price * item.quantity)}</strong></p>
+            </div>
+            <div class="quantity-controls" aria-label="Quantity controls for ${escapeHtml(item.name)}">
+                <button type="button" data-action="decrease" data-index="${index}" aria-label="Decrease quantity">−</button>
+                <span>${item.quantity}</span>
+                <button type="button" data-action="increase" data-index="${index}" aria-label="Increase quantity">+</button>
+            </div>
+            <button class="remove-item" type="button" data-action="remove" data-index="${index}">
+                <i class="fa-solid fa-trash"></i> Remove
+            </button>
+        </article>
+    `).join('');
+
+    const total = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
+    totalDisplay.textContent = money(total);
+}
+
+function escapeHtml(value) {
+    return String(value).replace(/[&<>"']/g, character => ({
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#39;'
+    })[character]);
+}
+
+function openCart() {
+    document.getElementById('cartOverlay').classList.add('open');
+    document.getElementById('cartOverlay').setAttribute('aria-hidden', 'false');
+    renderCart();
+}
+
+function closeCart() {
+    document.getElementById('cartOverlay').classList.remove('open');
+    document.getElementById('cartOverlay').setAttribute('aria-hidden', 'true');
+}
+
+document.getElementById('cartItemsList').addEventListener('click', event => {
+    const button = event.target.closest('button[data-action]');
+    if (!button) return;
+
+    const index = Number(button.dataset.index);
+    const action = button.dataset.action;
+    if (!cartItems[index]) return;
+
+    if (action === 'increase') {
+        cartItems[index].quantity += 1;
+    } else if (action === 'decrease') {
+        cartItems[index].quantity -= 1;
+        if (cartItems[index].quantity <= 0) {
+            cartItems.splice(index, 1);
+        }
+    } else if (action === 'remove') {
+        cartItems.splice(index, 1);
+    }
+
+    saveCart();
+});
+
+document.getElementById('cartButton').addEventListener('click', openCart);
+document.getElementById('closeCart').addEventListener('click', closeCart);
+document.getElementById('cartOverlay').addEventListener('click', event => {
+    if (event.target.id === 'cartOverlay') closeCart();
+});
+document.addEventListener('keydown', event => {
+    if (event.key === 'Escape') closeCart();
+});
+
+// Open the service booking form on this page and pre-select the chosen service.
+function accessService(serviceName, targetUrl) {
+    const modal = document.getElementById('serviceRequestModal');
+    const serviceInput = document.getElementById('homepageServiceName');
+    const notes = document.getElementById('homepageClientNotes');
+
+    serviceInput.value = serviceName;
+    notes.value = '';
+    notes.placeholder = getServiceInstructions(serviceName);
+    modal.classList.add('show');
+    modal.setAttribute('aria-hidden', 'false');
+    document.getElementById('homepageClientName').focus();
+}
+
+// Give visitors a useful prompt based on the service they selected.
+function getServiceInstructions(serviceName) {
+    const name = serviceName.toLowerCase();
+    if (name.includes('money swap') || name.includes('data')) {
+        return 'Specify the amount, source and destination (Airtel Money, Mpamba, bank or cash), and your preferred location.';
+    }
+    if (name.includes('repair') || name.includes('hardware')) {
+        return 'Describe the device, make/model, fault or problem, and any other useful details.';
+    }
+    if (name.includes('skin') || name.includes('wrapping')) {
+        return 'Specify whether it is a phone or PC, the device model, preferred colour/design and any custom details.';
+    }
+    if (name.includes('printing')) {
+        return 'Specify the document or item, number of pages/items, printing type, colour preference and collection/delivery needs.';
+    }
+    if (name.includes('troubleshooting') || name.includes('software')) {
+        return 'Describe the computer/phone model, the software issue and any error message you are seeing.';
+    }
+    if (name.includes('hostel') || name.includes('room')) {
+        return 'Specify your preferred location, accommodation type, number of occupants and expected booking period.';
+    }
+    return 'Describe what service you need, the relevant item or device, your preferred location and any special instructions.';
+}
+
+function closeServiceRequest() {
+    const modal = document.getElementById('serviceRequestModal');
+    modal.classList.remove('show');
+    modal.setAttribute('aria-hidden', 'true');
+}
+
+// Handle the service request on the homepage without navigating away.
+document.getElementById('homepageServiceForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const request = {
+        reference: 'TS-' + Date.now().toString().slice(-8),
+        service: document.getElementById('homepageServiceName').value,
+        customer: document.getElementById('homepageClientName').value.trim(),
+        phone: document.getElementById('homepageClientPhone').value.trim(),
+        alternativePhone: document.getElementById('homepageClientAltPhone').value.trim(),
+        details: document.getElementById('homepageClientNotes').value.trim(),
+        location: document.getElementById('homepageServiceLocation').value.trim(),
+        area: document.getElementById('homepageServiceArea').value.trim(),
+        landmark: document.getElementById('homepageServiceLandmark').value.trim(),
+        preferredDate: document.getElementById('homepageServiceDate').value,
+        preferredTime: document.getElementById('homepageServiceTime').value,
+        additionalInstructions: document.getElementById('homepageServiceExtraNotes').value.trim(),
+        createdAt: new Date().toISOString()
+    };
+    const requests = JSON.parse(localStorage.getItem('tecciraServiceRequests') || '[]');
+    requests.push(request);
+    localStorage.setItem('tecciraServiceRequests', JSON.stringify(requests));
+    toast('Service request ' + request.reference + ' saved on this device. TECCIRA will confirm the details.');
+    closeServiceRequest();
+    this.reset();
+});
+
+// Close the form when the visitor clicks outside it or presses Escape.
+document.getElementById('serviceRequestModal').addEventListener('click', function(event) {
+    if (event.target === this) closeServiceRequest();
+});
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') closeServiceRequest();
+});
+
+const searchForm = document.getElementById('searchForm');
+const searchInput = document.getElementById('searchInput');
+
+searchForm.addEventListener('submit', event => {
+    event.preventDefault();
+    const query = searchInput.value.trim().toLowerCase();
+    let found = 0;
+
+    document.querySelectorAll('.product').forEach(card => {
+        const searchableText = (card.dataset.search || '') + ' ' + card.textContent;
+        const matches = !query || searchableText.toLowerCase().includes(query);
+        card.style.display = matches ? 'flex' : 'none';
+        if (matches) {
+            found++;
+        }
+    });
+
+    document.querySelector('.featured').scrollIntoView({ behavior: 'smooth' });
+
+    if (query && found === 0) {
+        toast('No featured products or services matched. Try another search.');
+    }
+});
+
+const menuToggle = document.getElementById('menuToggle');
+const mainNav = document.getElementById('mainNav');
+
+menuToggle.addEventListener('click', () => {
+    const isOpen = mainNav.classList.toggle('open');
+    menuToggle.setAttribute('aria-expanded', String(isOpen));
+    menuToggle.innerHTML = isOpen
+        ? '<i class="fa-solid fa-xmark"></i>'
+        : '<i class="fa-solid fa-bars"></i>';
+});
+
+document.querySelectorAll('#mainNav a').forEach(link => {
+    link.addEventListener('click', () => {
+        mainNav.classList.remove('open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuToggle.innerHTML = '<i class="fa-solid fa-bars"></i>';
+    });
+});
+
+document.getElementById('cartButton').addEventListener('click', () => {
+    if (cartItems.length === 0) {
+        toast('Your cart is empty. Choose a product to add it.');
+        return;
+    }
+    const itemNames = cartItems.map(item => item.name).join(', ');
+    toast('Cart (' + cartItems.length + '): ' + itemNames);
+});
+
+// Read the exact session key used by login.html.
+const accountButton = document.getElementById('accountButton');
+const accountDropdown = document.getElementById('accountDropdown');
+const accountDisplayName = document.getElementById('accountDisplayName');
+const accountDisplayEmail = document.getElementById('accountDisplayEmail');
+const loginLink = document.getElementById('loginLink');
+const logoutButton = document.getElementById('logoutButton');
+
+function getTecciraSignedInUser() {
+    const savedUser = localStorage.getItem('tecciraUser');
+    if (!savedUser) return null;
+
+    try {
+        const user = JSON.parse(savedUser);
+        if (!user || typeof user !== 'object') return null;
+
+        // login.html stores result.user; demo login stores name and identifier.
+        const name = user.name || user.fullName || user.username ||
+            (user.identifier ? user.identifier.split('@')[0] : '');
+        const email = user.email || user.identifier || user.emailAddress || '';
+
+        if (!name && !email) return null;
+        return {
+            name: name || email.split('@')[0],
+            email: email
+        };
+    } catch (error) {
+        console.error('Could not read TECCIRA account session:', error);
+        return null;
+    }
+}
+
+function updateAccountHeader() {
+    const user = getTecciraSignedInUser();
+
+    if (user) {
+        accountButton.textContent = user.name;
+        accountButton.href = '#';
+        accountButton.setAttribute('aria-expanded', 'false');
+        loginLink.style.display = 'none';
+        accountDisplayName.textContent = user.name;
+        accountDisplayEmail.textContent = user.email;
+    } else {
+        accountButton.textContent = 'Sign Up';
+        accountButton.href = 'signup.html';
+        accountDropdown.classList.remove('open');
+        accountButton.setAttribute('aria-expanded', 'false');
+        loginLink.style.display = '';
+    }
+}
+
+accountButton.addEventListener('click', event => {
+    if (!getTecciraSignedInUser()) return; // Keep normal Sign Up navigation.
+    event.preventDefault();
+    const isOpen = accountDropdown.classList.toggle('open');
+    accountButton.setAttribute('aria-expanded', String(isOpen));
+});
+
+logoutButton.addEventListener('click', () => {
+    // Clear only the active login session. Keep the shopping cart and registrations.
+    localStorage.removeItem('tecciraUser');
+    localStorage.removeItem('tecciraToken');
+    updateAccountHeader();
+    accountDropdown.classList.remove('open');
+    toast('You have been logged out.');
+});
+
+document.addEventListener('click', event => {
+    if (!document.getElementById('accountWrap').contains(event.target)) {
+        accountDropdown.classList.remove('open');
+        accountButton.setAttribute('aria-expanded', 'false');
+    }
+});
+
+// Refresh the header if the user logs in or out in another browser tab.
+window.addEventListener('storage', event => {
+    if (event.key === 'tecciraUser' || event.key === 'tecciraToken') {
+        updateAccountHeader();
+    }
+});
+
+updateAccountHeader();
+</script>
+</body>
+</html>
