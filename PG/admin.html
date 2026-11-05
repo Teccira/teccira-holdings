@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | TECCIRA HOLDINGS — Unlimited Plug</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        :root {
+            --navy: #071a34;
+            --blue: #2865f5;
+            --ink: #0c1c36;
+            --muted: #526783;
+            --pale: #f5f8fc;
+            --white: #ffffff;
+            --border: #dce5ef;
+            --green: #0d8b57;
+            --shadow: 0 10px 25px rgba(7, 26, 52, 0.08);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: Inter, Arial, sans-serif;
+            background: var(--pale);
+            color: var(--ink);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            line-height: 1.5;
+        }
+
+        a { text-decoration: none; color: inherit; }
+
+        header {
+            min-height: 68px;
+            background: #07172e;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 4.1%;
+            gap: 24px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .brand { display: flex; align-items: center; gap: 12px; }
+        .mark { font-size: 38px; font-weight: 800; color: #38a0ff; text-shadow: 2px 2px #743eff; }
+        .brandname { font-size: 22px; letter-spacing: 4px; font-weight: 800; }
+        .brandsub { font-size: 9px; letter-spacing: 5px; text-align: center; margin-top: 2px; }
+
+        .nav-links { display: flex; gap: 20px; font-size: 13px; font-weight: 600; }
+        .nav-links a { color: white; transition: color 0.2s; }
+        .nav-links a:hover { color: #64a5ff; }
+
+        main {
+            flex: 1;
+            max-width: 1450px;
+            width: 100%;
+            margin: 30px auto;
+            padding: 0 4.1%;
+            display: grid;
+            gap: 25px;
+        }
+
+        .admin-intro {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 24px 28px;
+            box-shadow: var(--shadow);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .admin-intro h1 { font-size: 22px; color: var(--navy); font-weight: 800; margin-bottom: 4px; }
+        .admin-intro p { font-size: 13px; color: var(--muted); }
+
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+        }
+
+        .stat-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .stat-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: #e8f2ff;
+            color: var(--blue);
+            display: grid;
+            place-items: center;
+            font-size: 20px;
+        }
+
+        .stat-info span { display: block; font-size: 12px; color: var(--muted); font-weight: 600; }
+        .stat-info strong { font-size: 20px; color: var(--navy); font-weight: 800; }
+
+        .section {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 24px;
+            box-shadow: var(--shadow);
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 12px;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .section-header h2 { font-size: 17px; color: var(--navy); font-weight: 800; display: flex; align-items: center; gap: 8px; }
+
+        .table-responsive { width: 100%; overflow-x: auto; }
+
+        table { width: 100%; border-collapse: collapse; white-space: nowrap; }
+        th, td { border-bottom: 1px solid var(--border); padding: 12px 14px; text-align: left; font-size: 13px; }
+        th { background: #f8fafc; color: var(--navy); font-weight: 700; }
+        tr:hover td { background: #fdfefe; }
+
+        .btn-view {
+            background: #e8f2ff;
+            color: var(--blue);
+            border: 0;
+            padding: 7px 14px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .btn-view:hover { background: var(--blue); color: white; }
+
+        .btn-clear {
+            background: #fee2e2;
+            color: #b91c1c;
+            border: 0;
+            padding: 7px 14px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .btn-clear:hover { background: #ef4444; color: white; }
+
+        .status-select {
+            padding: 5px 10px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 700;
+            border: 1px solid var(--border);
+            cursor: pointer;
+            outline: none;
+        }
+        .status-pending { background: #fef3c7; color: #92400e; border-color: #fcd34d; }
+        .status-processing { background: #dbeafe; color: #1e40af; border-color: #93c5fd; }
+        .status-completed { background: #d1fae5; color: #065f46; border-color: #6ee7b7; }
+        .status-cancelled { background: #fee2e2; color: #991b1b; border-color: #fca5a5; }
+
+        .modal-backdrop {
+            position: fixed;
+            inset: 0;
+            background: rgba(7, 26, 52, 0.75);
+            z-index: 3000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 18px;
+        }
+        .modal-backdrop.show { display: flex; }
+        .detail-modal {
+            background: white;
+            border-radius: 16px;
+            width: min(100%, 600px);
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 26px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        .modal-heading { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; border-bottom: 1px solid var(--border); padding-bottom: 10px; }
+        .modal-heading h2 { font-size: 18px; color: var(--navy); font-weight: 800; }
+        .modal-close { border: 0; background: none; font-size: 24px; cursor: pointer; color: var(--muted); }
+
+        .detail-grid { display: grid; gap: 10px; font-size: 13px; }
+        .detail-row { display: grid; grid-template-columns: 180px 1fr; gap: 12px; border-bottom: 1px solid #f1f5f9; padding-bottom: 8px; }
+        .detail-row strong { color: var(--muted); font-weight: 600; }
+        .detail-row span { color: var(--ink); font-weight: 700; overflow-wrap: anywhere; }
+
+        .footer {
+            background: linear-gradient(105deg, #071a34, #0b2344);
+            color: white;
+            padding: 24px 4.1%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 12px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="brand">
+            <div class="mark">T</div>
+            <div>
+                <div class="brandname">TECCIRA</div>
+                <div class="brandsub">HOLDINGS ADMIN</div>
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="index.html"><i class="fa-solid fa-house"></i> Go to Website</a>
+            <a href="shop.html"><i class="fa-solid fa-shop"></i> Shop</a>
+            <a href="services.html"><i class="fa-solid fa-briefcase"></i> Services</a>
+        </div>
+    </header>
+
+    <main>
+        <div class="admin-intro">
+            <div>
+                <h1>Admin Control Center</h1>
+                <p>Live synchronized records directly from <strong>SQLite (database.sqlite)</strong> via Port 3000 (Auto-refreshing every 5 seconds).</p>
+            </div>
+            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                <button class="btn-view" onclick="loadAdminData()" style="background:var(--blue); color:white; padding:10px 18px; font-size:12px;"><i class="fa-solid fa-rotate"></i> Refresh Data</button>
+                <button class="btn-clear" onclick="clearLogs('all')" style="padding:10px 18px; font-size:12px;"><i class="fa-solid fa-trash-can"></i> Clear All Server Logs</button>
+            </div>
+        </div>
+
+        <div class="stats-row">
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fa-solid fa-users"></i></div>
+                <div class="stat-info"><span>Registered Users</span><strong id="statUsers">0</strong></div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fa-solid fa-box-open"></i></div>
+                <div class="stat-info"><span>Total Orders</span><strong id="statOrders">0</strong></div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fa-solid fa-briefcase"></i></div>
+                <div class="stat-info"><span>Service Requests</span><strong id="statServices">0</strong></div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fa-solid fa-envelope"></i></div>
+                <div class="stat-info"><span>Contact Messages</span><strong id="statMessages">0</strong></div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <h2><i class="fa-solid fa-box"></i> Customer Orders</h2>
+                <button class="btn-clear" onclick="clearLogs('orders')">Clear Orders</button>
+            </div>
+            <div class="table-responsive">
+                <table id="ordersTable">
+                    <thead>
+                        <tr><th>Order ID</th><th>Customer</th><th>Item</th><th>Total (MWK)</th><th>Status</th><th>Date</th><th>Action</th></tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <h2><i class="fa-solid fa-clipboard-list"></i> Service Requests</h2>
+                <button class="btn-clear" onclick="clearLogs('serviceRequests')">Clear Service Requests</button>
+            </div>
+            <div class="table-responsive">
+                <table id="servicesTable">
+                    <thead>
+                        <tr><th>Request ID</th><th>Client</th><th>Service</th><th>Phone</th><th>Status</th><th>Date</th><th>Action</th></tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <h2><i class="fa-solid fa-user-group"></i> Registered Users</h2>
+                <button class="btn-clear" onclick="clearLogs('users')">Clear Users</button>
+            </div>
+            <div class="table-responsive">
+                <table id="usersTable">
+                    <thead>
+                        <tr><th>User ID</th><th>Full Name</th><th>Email Address</th><th>Phone Number</th><th>Registered At</th></tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <h2><i class="fa-solid fa-envelope-open-text"></i> Contact Inquiries</h2>
+                <button class="btn-clear" onclick="clearLogs('contacts')">Clear Messages</button>
+            </div>
+            <div class="table-responsive">
+                <table id="contactsTable">
+                    <thead>
+                        <tr><th>Message ID</th><th>Sender</th><th>Subject / Reference</th><th>Contact Details</th><th>Message</th></tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <!-- Detail Inspector Modal -->
+    <div class="modal-backdrop" id="detailModal">
+        <div class="detail-modal">
+            <div class="modal-heading">
+                <h2 id="modalTitle">Record Details</h2>
+                <button type="button" class="modal-close" onclick="closeDetailModal()">&times;</button>
+            </div>
+            <div class="detail-grid" id="modalContent"></div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div>TECCIRA HOLDINGS Admin Panel &copy; 2026</div>
+        <div>Server Backend Target: <strong style="color: #4ade80;">https://teccira-holdings-production.up.railway.app</strong></div>
+    </footer>
+
+    <script>
+        const BASE_API = 'https://teccira-holdings-production.up.railway.app';
+
+        let cachedOrders = [];
+        let cachedServices = [];
+
+        function getStatusClass(status) {
+            const s = (status || 'Pending').toLowerCase();
+            if (s === 'completed') return 'status-completed';
+            if (s === 'processing') return 'status-processing';
+            if (s === 'cancelled') return 'status-cancelled';
+            return 'status-pending';
+        }
+
+        async function updateOrderStatus(orderId, newStatus) {
+            try {
+                const res = await fetch(`${BASE_API}/api/orders/${orderId}/status`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ status: newStatus })
+                });
+                const result = await res.json();
+                if (res.ok && result.success) {
+                    loadAdminData();
+                } else {
+                    alert(result.message || 'Failed to update order status.');
+                }
+            } catch (err) {
+                console.error('Error updating status:', err);
+            }
+        }
+
+        async function updateServiceStatus(reqId, newStatus) {
+            try {
+                const res = await fetch(`${BASE_API}/api/services/${reqId}/status`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ status: newStatus })
+                });
+                const result = await res.json();
+                if (res.ok && result.success) {
+                    loadAdminData();
+                } else {
+                    alert(result.message || 'Failed to update service status.');
+                }
+            } catch (err) {
+                console.error('Error updating service status:', err);
+            }
+        }
+
+        async function loadAdminData() {
+            try {
+                // Fetch Users
+                const usersRes = await fetch(`${BASE_API}/api/users`).catch(() => null);
+                if (usersRes && usersRes.ok) {
+                    const users = await usersRes.json();
+                    document.getElementById('statUsers').textContent = users.length;
+                    const tbody = document.querySelector('#usersTable tbody');
+                    tbody.innerHTML = users.map(u => `
+                        <tr>
+                            <td><code>${u.id || 'N/A'}</code></td>
+                            <td><strong>${u.name || 'N/A'}</strong></td>
+                            <td>${u.email || 'N/A'}</td>
+                            <td>${u.phone || 'N/A'}</td>
+                            <td>${u.createdAt ? new Date(u.createdAt).toLocaleString() : 'N/A'}</td>
+                        </tr>
+                    `).join('') || '<tr><td colspan="5" style="text-align:center; color:var(--muted);">No users registered yet.</td></tr>';
+                }
+
+                // Fetch Orders
+                const ordersRes = await fetch(`${BASE_API}/api/orders`).catch(() => null);
+                if (ordersRes && ordersRes.ok) {
+                    cachedOrders = await ordersRes.json();
+                    document.getElementById('statOrders').textContent = cachedOrders.length;
+                    const ordersBody = document.querySelector('#ordersTable tbody');
+                    ordersBody.innerHTML = cachedOrders.map((o, idx) => `
+                        <tr>
+                            <td><code>${o.id || 'N/A'}</code></td>
+                            <td><strong>${o.name || 'N/A'}</strong></td>
+                            <td>${o.item || 'N/A'}</td>
+                            <td><strong>MWK ${Number(o.totalPayable || 0).toLocaleString()}</strong></td>
+                            <td>
+                                <select class="status-select ${getStatusClass(o.status)}" onchange="updateOrderStatus('${o.id}', this.value)">
+                                    <option value="Pending" ${o.status === 'Pending' ? 'selected' : ''}>Pending</option>
+                                    <option value="Processing" ${o.status === 'Processing' ? 'selected' : ''}>Processing</option>
+                                    <option value="Completed" ${o.status === 'Completed' ? 'selected' : ''}>Completed</option>
+                                    <option value="Cancelled" ${o.status === 'Cancelled' ? 'selected' : ''}>Cancelled</option>
+                                </select>
+                            </td>
+                            <td>${o.createdAt ? new Date(o.createdAt).toLocaleString() : 'N/A'}</td>
+                            <td><button class="btn-view" onclick="inspectOrder(${idx})"><i class="fa-solid fa-eye"></i> Details</button></td>
+                        </tr>
+                    `).join('') || '<tr><td colspan="7" style="text-align:center; color:var(--muted);">No orders found.</td></tr>';
+                }
+
+                // Fetch Service Requests
+                const srvRes = await fetch(`${BASE_API}/api/services/requests`).catch(() => null);
+                if (srvRes && srvRes.ok) {
+                    cachedServices = await srvRes.json();
+                    document.getElementById('statServices').textContent = cachedServices.length;
+                    const srvBody = document.querySelector('#servicesTable tbody');
+                    srvBody.innerHTML = cachedServices.map((s, idx) => `
+                        <tr>
+                            <td><code>${s.id || 'N/A'}</code></td>
+                            <td><strong>${s.clientName || 'N/A'}</strong></td>
+                            <td>${s.serviceName || 'N/A'}</td>
+                            <td>${s.clientPhone || 'N/A'}</td>
+                            <td>
+                                <select class="status-select ${getStatusClass(s.status)}" onchange="updateServiceStatus('${s.id}', this.value)">
+                                    <option value="Pending" ${s.status === 'Pending' ? 'selected' : ''}>Pending</option>
+                                    <option value="Processing" ${s.status === 'Processing' ? 'selected' : ''}>Processing</option>
+                                    <option value="Completed" ${s.status === 'Completed' ? 'selected' : ''}>Completed</option>
+                                    <option value="Cancelled" ${s.status === 'Cancelled' ? 'selected' : ''}>Cancelled</option>
+                                </select>
+                            </td>
+                            <td>${s.preferredDate || 'Flexible'}</td>
+                            <td><button class="btn-view" onclick="inspectService(${idx})"><i class="fa-solid fa-eye"></i> Details</button></td>
+                        </tr>
+                    `).join('') || '<tr><td colspan="7" style="text-align:center; color:var(--muted);">No service requests found.</td></tr>';
+                }
+
+                // Fetch Contacts
+                const msgRes = await fetch(`${BASE_API}/api/contact`).catch(() => null);
+                if (msgRes && msgRes.ok) {
+                    const msgData = await msgRes.json();
+                    const messages = Array.isArray(msgData) ? msgData : (msgData.data || []);
+                    document.getElementById('statMessages').textContent = messages.length;
+                    const msgBody = document.querySelector('#contactsTable tbody');
+                    msgBody.innerHTML = messages.map(m => `
+                        <tr>
+                            <td><code>${m.id || 'N/A'}</code></td>
+                            <td><strong>${m.name || 'N/A'}</strong></td>
+                            <td>${m.subject || m.reference || 'N/A'}</td>
+                            <td>${m.contactDetail || 'N/A'}</td>
+                            <td style="max-width: 250px; overflow:hidden; text-overflow:ellipsis;" title="${m.message || ''}">${m.message || ''}</td>
+                        </tr>
+                    `).join('') || '<tr><td colspan="5" style="text-align:center; color:var(--muted);">No contact inquiries.</td></tr>';
+                }
+
+            } catch (err) {
+                console.error("Error loading admin data from https://teccira-holdings-production.up.railway.app:", err);
+            }
+        }
+
+        async function clearLogs(target) {
+            if (!confirm(`Are you sure you want to clear server logs for [${target.toUpperCase()}]? This action cannot be undone.`)) {
+                return;
+            }
+
+            try {
+                const response = await fetch(`${BASE_API}/api/admin/clear`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ target })
+                });
+                const result = await response.json();
+                if (response.ok && result.success) {
+                    alert(result.message);
+                    loadAdminData();
+                } else {
+                    alert(result.message || 'Failed to clear logs.');
+                }
+            } catch (err) {
+                console.error('Error clearing logs:', err);
+                alert('Could not connect to backend server at https://teccira-holdings-production.up.railway.app. Ensure node server.js is running.');
+            }
+        }
+
+        function inspectOrder(index) {
+            const o = cachedOrders[index];
+            if (!o) return;
+            document.getElementById('modalTitle').textContent = `Order Details: ${o.id || ''}`;
+            document.getElementById('modalContent').innerHTML = `
+                <div class="detail-row"><strong>Order ID:</strong> <span>${o.id || 'N/A'}</span></div>
+                <div class="detail-row"><strong>Status:</strong> <span style="text-transform:uppercase;">${o.status || 'Pending'}</span></div>
+                <div class="detail-row"><strong>Customer Name:</strong> <span>${o.name || 'N/A'}</span></div>
+                <div class="detail-row"><strong>Phone Number:</strong> <span>${o.phone || 'N/A'}</span></div>
+                <div class="detail-row"><strong>Item Ordered:</strong> <span>${o.item || 'N/A'}</span></div>
+                <div class="detail-row"><strong>Size / Variant:</strong> <span>${o.jerseySize || 'N/A'}</span></div>
+                <div class="detail-row"><strong>Item Price:</strong> <span>MWK ${Number(o.itemPrice || 0).toLocaleString()}</span></div>
+                <div class="detail-row"><strong>Delivery Method:</strong> <span>${o.deliveryMethod || 'N/A'}</span></div>
+                <div class="detail-row"><strong>Address / Location:</strong> <span>${o.address || 'Self-Collection'}</span></div>
+                <div class="detail-row"><strong>Delivery Fee:</strong> <span>MWK ${Number(o.deliveryFee || 0).toLocaleString()}</span></div>
+                <div class="detail-row"><strong>Total Payable:</strong> <span style="color:var(--blue);">MWK ${Number(o.totalPayable || 0).toLocaleString()}</span></div>
+                <div class="detail-row"><strong>Payment Method:</strong> <span style="text-transform:uppercase;">${o.paymentMethod || 'N/A'}</span></div>
+                <div class="detail-row"><strong>Created At:</strong> <span>${o.createdAt ? new Date(o.createdAt).toLocaleString() : 'N/A'}</span></div>
+            `;
+            document.getElementById('detailModal').classList.add('show');
+        }
+
+        function inspectService(index) {
+            const s = cachedServices[index];
+            if (!s) return;
+            document.getElementById('modalTitle').textContent = `Service Request: ${s.id || ''}`;
+            document.getElementById('modalContent').innerHTML = `
+                <div class="detail-row"><strong>Request ID:</strong> <span>${s.id || 'N/A'}</span></div>
+                <div class="detail-row"><strong>Status:</strong> <span style="text-transform:uppercase;">${s.status || 'Pending'}</span></div>
+                <div class="detail-row"><strong>Service Name:</strong> <span>${s.serviceName || 'N/A'}</span></div>
+                <div class="detail-row"><strong>Client Name:</strong> <span>${s.clientName || 'N/A'}</span></div>
+                <div class="detail-row"><strong>Primary Phone:</strong> <span>${s.clientPhone || 'N/A'}</span></div>
+                <div class="detail-row"><strong>Alternative Phone:</strong> <span>${s.alternativePhone || 'N/A'}</span></div>
+                <div class="detail-row"><strong>Location / Area:</strong> <span>${s.location || ''}, ${s.area || ''}</span></div>
+                <div class="detail-row"><strong>Landmark:</strong> <span>${s.landmark || 'N/A'}</span></div>
+                <div class="detail-row"><strong>Preferred Date:</strong> <span>${s.preferredDate || 'Flexible'}</span></div>
+                <div class="detail-row"><strong>Preferred Time:</strong> <span>${s.preferredTime || 'Flexible'}</span></div>
+                <div class="detail-row"><strong>Client Notes:</strong> <span>${s.clientNotes || 'None'}</span></div>
+                <div class="detail-row"><strong>Logged At:</strong> <span>${s.createdAt ? new Date(s.createdAt).toLocaleString() : 'N/A'}</span></div>
+            `;
+            document.getElementById('detailModal').classList.add('show');
+        }
+
+        function closeDetailModal() {
+            document.getElementById('detailModal').classList.remove('show');
+        }
+
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDetailModal(); });
+        
+        window.addEventListener('load', () => {
+            loadAdminData();
+            setInterval(loadAdminData, 5000);
+        });
+    </script>
+</body>
+</html>

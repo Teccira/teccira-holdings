@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | TECCIRA HOLDINGS — Unlimited Plug</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        :root {
+            --navy: #071a34;
+            --blue: #2865f5;
+            --ink: #0c1c36;
+            --muted: #526783;
+            --pale: #f5f8fc;
+            --white: #ffffff;
+            --border: #dce5ef;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Inter, Arial, sans-serif;
+            background: var(--pale);
+            color: var(--ink);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Header Navigation */
+        header {
+            min-height: 68px;
+            background: #07172e;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 4.1%;
+            gap: 24px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            min-width: 235px;
+        }
+
+        .mark {
+            font-size: 42px;
+            font-weight: 800;
+            color: #38a0ff;
+            text-shadow: 2px 2px #743eff;
+        }
+
+        .brandname {
+            font-size: 25px;
+            letter-spacing: 4px;
+            font-weight: 800;
+        }
+
+        .brandsub {
+            font-size: 10px;
+            letter-spacing: 6px;
+            text-align: center;
+            margin-top: 4px;
+        }
+
+        .menu-toggle {
+            display: none;
+            color: white;
+            background: transparent;
+            border: 0;
+            font-size: 23px;
+            cursor: pointer;
+        }
+
+        .nav {
+            display: flex;
+            gap: 28px;
+            align-items: center;
+            height: 45px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .nav a {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+            color: white;
+            transition: color 0.2s;
+        }
+
+        .nav a:hover,
+        .nav .active {
+            color: #64a5ff;
+        }
+
+        .nav .active:after {
+            content: "";
+            height: 3px;
+            background: #3985ff;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            border-radius: 2px;
+        }
+
+        .actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            font-size: 14px;
+            white-space: nowrap;
+        }
+
+        .icon {
+            color: white;
+            background: none;
+            border: 0;
+            font-size: 21px;
+            cursor: pointer;
+            position: relative;
+            transition: color 0.2s;
+        }
+
+        .icon:hover { color: #64a5ff; }
+
+        .count {
+            position: absolute;
+            right: -9px;
+            top: -8px;
+            background: var(--blue);
+            border-radius: 50%;
+            font-size: 10px;
+            padding: 4px 6px;
+            font-weight: 700;
+        }
+
+        .login { color: white; transition: color 0.2s; }
+        .login:hover { color: #64a5ff; }
+
+        .signup {
+            background: var(--blue);
+            color: white;
+            padding: 10px 22px;
+            border-radius: 25px;
+            font-weight: 700;
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        .signup:hover {
+            background: #174ed1;
+            transform: translateY(-1px);
+        }
+
+        .account-wrap { position: relative; }
+        .account-dropdown {
+            display: none;
+            position: absolute;
+            top: calc(100% + 10px);
+            right: 0;
+            width: 230px;
+            padding: 14px;
+            background: #ffffff;
+            color: var(--ink);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            box-shadow: 0 12px 30px rgba(7,26,52,.18);
+            z-index: 1500;
+        }
+        .account-dropdown.open { display: block; }
+        .account-dropdown strong { display:block; font-size:13px; overflow-wrap:anywhere; }
+        .account-dropdown small { display:block; color:var(--muted); margin-top:4px; overflow-wrap:anywhere; }
+        .account-dropdown button {
+            width:100%; margin-top:12px; padding:9px 12px; border:0; border-radius:8px;
+            background:#ffebee; color:#b71c1c; font-weight:700; cursor:pointer;
+        }
+        .account-dropdown button:hover { background:#ffcdd2; }
+
+        /* Hero Banner with Matching Background */
+        .hero-banner {
+            min-height: 300px;
+            color: white;
+            display: flex;
+            align-items: center;
+            padding: 38px 4.1%;
+            background: linear-gradient(90deg, rgba(3,15,30,.96), rgba(3,15,30,.78) 38%, rgba(3,15,30,.05)), 
+                       url('background.png') center/cover no-repeat;
+        }
+
+        .hero-content {
+            max-width: 650px;
+        }
+
+        .eyebrow {
+            font-size: 13px;
+            letter-spacing: 3px;
+            color: #72c0ff;
+            font-weight: 700;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .hero-banner h1 {
+            font-size: clamp(32px, 3.8vw, 44px);
+            margin-bottom: 12px;
+            font-weight: 800;
+        }
+
+        .hero-banner h1 span {
+            color: #38a0ff;
+        }
+
+        .hero-banner p {
+            color: #cbd5e1;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* Main Container */
+        main {
+            max-width: 1100px;
+            margin: 40px auto 60px;
+            padding: 0 4.1%;
+        }
+
+        .section-label {
+            display: inline-block;
+            color: var(--blue);
+            background: rgba(40, 101, 245, 0.1);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Grid Layouts */
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        .info-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 32px;
+            box-shadow: 0 4px 15px rgba(7, 26, 52, 0.05);
+            transition: transform 0.25s, box-shadow 0.25s;
+        }
+
+        .info-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 26px rgba(7, 26, 52, 0.1);
+            border-color: var(--blue);
+        }
+
+        .card-tag {
+            color: var(--blue);
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .info-card h2 {
+            font-size: 1.4rem;
+            color: var(--navy);
+            margin-bottom: 12px;
+            font-weight: 800;
+        }
+
+        .info-card p {
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* Mission & Vision */
+        .mission-vision {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        .focus-card {
+            padding: 32px;
+            border-radius: 14px;
+            background: linear-gradient(145deg, #071a34, #0f2d57);
+            color: white;
+            box-shadow: 0 8px 24px rgba(7, 26, 52, 0.12);
+        }
+
+        .focus-card h2 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #38a0ff;
+        }
+
+        .focus-card p {
+            color: #cbd5e1;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* Featured Team Image */
+        .featured-image-box {
+            margin-bottom: 50px;
+            border-radius: 20px;
+            overflow: hidden;
+            background: var(--white);
+            border: 1px solid var(--border);
+            box-shadow: 0 5px 20px rgba(7, 26, 52, 0.06);
+        }
+
+        .featured-image-box img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .image-caption {
+            text-align: center;
+            color: var(--muted);
+            font-size: 13px;
+            padding: 15px;
+            background: var(--white);
+            font-weight: 600;
+        }
+
+        /* Values Section */
+        .values-section {
+            margin-bottom: 50px;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .section-heading h2 {
+            font-size: 1.8rem;
+            color: var(--navy);
+            margin-bottom: 8px;
+            font-weight: 800;
+        }
+
+        .section-heading p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 20px;
+        }
+
+        .value-box {
+            text-align: center;
+            background: var(--white);
+            padding: 28px 20px;
+            border-radius: 14px;
+            border: 1px solid var(--border);
+            transition: transform 0.25s, box-shadow 0.25s;
+        }
+
+        .value-box:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 24px rgba(7, 26, 52, 0.1);
+            border-color: var(--blue);
+        }
+
+        .value-icon {
+            font-size: 2rem;
+            color: var(--blue);
+            margin-bottom: 12px;
+        }
+
+        .value-box h3 {
+            font-size: 1.1rem;
+            color: var(--navy);
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .value-box p {
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        /* CTA Banner */
+        .contact-banner {
+            text-align: center;
+            background: linear-gradient(105deg, #071a34, #0b2344);
+            color: white;
+            padding: 45px 25px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(7, 26, 52, 0.15);
+        }
+
+        .contact-banner h2 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            font-weight: 800;
+        }
+
+        .contact-banner p {
+            margin-bottom: 22px;
+            color: #cbd5e1;
+            font-size: 14px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--blue);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-weight: 700;
+            font-size: 14px;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .cta-button:hover {
+            background: #174ed1;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(105deg, #071a34, #0b2344);
+            color: white;
+            padding: 32px 4.1%;
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            min-height: 110px;
+            margin-top: 60px;
+        }
+
+        .globe {
+            font-size: 40px;
+            color: #2d79ff;
+            min-width: 50px;
+        }
+
+        .footcopy {
+            flex: 1;
+        }
+
+        .footcopy h2 {
+            font-size: 18px;
+            margin-bottom: 6px;
+            font-weight: 700;
+        }
+
+        .footcopy p {
+            font-size: 12px;
+            line-height: 1.7;
+            max-width: 650px;
+            color: #cbd5e1;
+        }
+
+        .learn {
+            border: 1px solid #4c9bff;
+            border-radius: 24px;
+            padding: 12px 24px;
+            font-size: 12px;
+            white-space: nowrap;
+            color: white;
+            font-weight: 600;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background: var(--navy);
+            color: white;
+            padding: 14px 22px;
+            border-radius: 10px;
+            display: none;
+            z-index: 2200;
+            font-size: 13px;
+            font-weight: 600;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+        }
+
+        .toast.show {
+            display: block;
+        }
+
+        /* Cart overlay modal to match shop/services */
+        .cart-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(7, 26, 52, 0.68);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 18px;
+            z-index: 3000;
+        }
+        .cart-overlay.show { display: flex; }
+        .cart-panel {
+            width: min(100%, 680px);
+            max-height: 90vh;
+            overflow-y: auto;
+            background: #fff;
+            border-radius: 16px;
+            padding: 22px;
+            box-shadow: 0 20px 60px rgba(0,0,0,.3);
+            color: var(--ink);
+        }
+        .cart-heading, .cart-item, .cart-summary {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 14px;
+        }
+        .cart-heading { border-bottom: 1px solid var(--border); padding-bottom: 14px; margin-bottom: 14px; }
+        .cart-heading h2 { font-size: 19px; color: var(--navy); }
+        .cart-close { border: 0; background: transparent; font-size: 28px; cursor: pointer; color: var(--muted); }
+        .cart-item { padding: 14px 0; border-bottom: 1px solid var(--border); align-items: flex-start; }
+        .cart-item-info { flex: 1; min-width: 0; }
+        .cart-item-info strong { display: block; color: var(--navy); font-size: 14px; }
+        .cart-item-info small { color: var(--muted); }
+        .cart-item-controls { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+        .cart-item-controls button { border: 0; border-radius: 6px; padding: 6px 10px; cursor: pointer; font-weight: 700; }
+        .qty-btn { background: #e8f0ff; color: var(--navy); }
+        .remove-btn { background: #fee2e2; color: #991b1b; }
+        .cart-summary { border-top: 2px solid var(--border); padding-top: 16px; margin-top: 14px; font-weight: 800; color: var(--navy); }
+        .cart-empty { text-align: center; color: var(--muted); padding: 28px 8px; }
+        .cart-checkout-btn { width: 100%; margin-top: 16px; border: 0; border-radius: 9px; padding: 13px; color: white; background: #0d8b57; font-weight: 800; cursor: pointer; }
+        .cart-checkout-btn:hover { background: #087447; }
+
+        @media (max-width: 850px) {
+            .about-grid,
+            .mission-vision {
+                grid-template-columns: 1fr;
+            }
+
+            .values-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .featured-image-box img {
+                height: 280px;
+            }
+        }
+
+        @media (max-width: 800px) {
+            header { flex-wrap: wrap; padding: 12px 5%; }
+            .brand { min-width: 0; gap: 8px; }
+            .mark { font-size: 34px; }
+            .brandname { font-size: 18px; letter-spacing: 2px; }
+            .brandsub { letter-spacing: 4px; }
+            .menu-toggle { display: block; margin-left: auto; }
+            .nav {
+                display: none;
+                order: 4;
+                width: 100%;
+                height: auto;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0;
+                padding: 8px 0;
+                font-size: 14px;
+            }
+            .nav.open { display: flex; }
+            .nav a { min-height: 42px; padding: 8px 4px; }
+            .nav .active:after { bottom: 0; right: auto; width: 45px; }
+            .actions { margin-left: 0; gap: 12px; font-size: 12px; }
+            .signup { padding: 8px 13px; }
+
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="brand">
+            <div class="mark">T</div>
+            <div>
+                <div class="brandname">TECCIRA</div>
+                <div class="brandsub">HOLDINGS</div>
+            </div>
+        </div>
+        <button class="menu-toggle" id="menuToggle" aria-label="Open navigation menu" aria-expanded="false">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+        <nav class="nav" id="mainNav" aria-label="Main navigation">
+            <a href="index.html"><i class="fa-solid fa-house"></i> Home</a>
+            <a href="shop.html"><i class="fa-solid fa-shop"></i> Shop</a>
+            <a href="services.html"><i class="fa-solid fa-briefcase"></i> Services</a>
+            <a href="about.html" class="active"><i class="fa-solid fa-circle-info"></i> About</a>
+            <a href="contact.html"><i class="fa-solid fa-envelope"></i> Contact</a>
+        </nav>
+        <div class="actions">
+            <button class="icon" id="cartButton" aria-label="Open shopping cart">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span class="count" id="cartCount">0</span>
+            </button>
+            <a class="login" id="loginLink" href="login.html">Login</a>
+            <div class="account-wrap" id="accountWrap">
+                <a class="signup" id="accountButton" href="signup.html">Sign Up</a>
+                <div class="account-dropdown" id="accountDropdown" aria-live="polite">
+                    <strong id="accountDisplayName">Account</strong>
+                    <small id="accountDisplayEmail"></small>
+                    <button type="button" id="logoutButton">Log Out</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="hero-banner">
+        <div class="hero-content">
+            <div class="eyebrow">Get To Know Us</div>
+            <h1>About <span>TECCIRA Holdings</span></h1>
+            <p>Empowering businesses and individuals through digital innovation, reliable product supply, and accessible on-demand services.</p>
+        </div>
+    </div>
+
+    <main>
+
+        <section class="about-grid">
+            <article class="info-card">
+                <div class="card-tag">01 — WHO WE ARE</div>
+                <h2>Who We Are</h2>
+                <p>TECCIRA HOLDINGS is an all-in-one digital business platform designed to bring customers, products, and services closer together. We create a seamless environment where users can access essential safety gear, sports apparel, electronics, and digital services effortlessly.</p>
+            </article>
+
+            <article class="info-card">
+                <div class="card-tag">02 — WHAT WE DO</div>
+                <h2>What We Do</h2>
+                <p>Our platform streamlines access to essential physical stock and on-demand digital solutions. From supplying high-grade safety equipment and sports replica jerseys to facilitating money swaps, PC/phone skin wrapping, and electronic repairs, we serve as your ultimate plug.</p>
+            </article>
+        </section>
+
+        <section class="mission-vision">
+            <article class="focus-card">
+                <h2><i class="fa-solid fa-bullseye"></i> Our Mission</h2>
+                <p>To deliver an accessible, reliable digital platform that connects customers with top-quality products, custom customization services, and essential financial/digital solutions while driving growth for local businesses.</p>
+            </article>
+
+            <article class="focus-card">
+                <h2><i class="fa-solid fa-eye"></i> Our Vision</h2>
+                <p>To stand out as the most trusted platform across regional markets, renowned for connecting people with products, learning resources, and opportunities seamlessly.</p>
+            </article>
+        </section>
+
+        <section class="featured-image-box">
+            <img src="./pic.jpeg" alt="TECCIRA Holdings Team and Operations" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/1200x600?text=TECCIRA+Team';">
+            <p class="image-caption">TECCIRA HOLDINGS — Connecting people, businesses, and opportunities.</p>
+        </section>
+
+        <section class="values-section">
+            <div class="section-heading">
+                <span class="section-label">What Guides Us</span>
+                <h2>Our Core Values</h2>
+                <p>The foundational principles that guide our platform operations and customer support.</p>
+            </div>
+
+            <div class="values-grid">
+                <article class="value-box">
+                    <div class="value-icon"><i class="fa-solid fa-handshake"></i></div>
+                    <h3>Collaboration</h3>
+                    <p>Building strong, transparent relationships between customers, service providers, and partners.</p>
+                </article>
+
+                <article class="value-box">
+                    <div class="value-icon"><i class="fa-solid fa-lightbulb"></i></div>
+                    <h3>Innovation</h3>
+                    <p>Embracing modern digital technology to deliver smoother transactions and custom skin designs.</p>
+                </article>
+
+                <article class="value-box">
+                    <div class="value-icon"><i class="fa-solid fa-chart-line"></i></div>
+                    <h3>Continuous Growth</h3>
+                    <p>Constantly improving our service catalog and inventory based on customer needs.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="contact-banner">
+            <h2>Let's Build Better Connections</h2>
+            <p>Have questions or want to partner with TECCIRA HOLDINGS?</p>
+            <a href="contact.html" class="cta-button">Contact Us Today &nbsp;&rarr;</a>
+        </section>
+
+    </main>
+
+    <!-- Shared Shopping Cart Modal Overlay -->
+    <div class="cart-overlay" id="cartOverlay" aria-hidden="true">
+        <section class="cart-panel" role="dialog" aria-modal="true" aria-labelledby="cartTitle">
+            <div class="cart-heading">
+                <h2 id="cartTitle"><i class="fa-solid fa-cart-shopping"></i> Your Shopping Cart</h2>
+                <button class="cart-close" type="button" onclick="closeCart()" aria-label="Close cart">&times;</button>
+            </div>
+            <div id="cartItemsList"></div>
+            <div class="cart-summary"><span>Cart total</span><span id="cartTotal">MWK 0</span></div>
+            <button class="cart-checkout-btn" type="button" onclick="window.location.href='shop.html'">Proceed to Shop / Checkout</button>
+        </section>
+    </div>
+
+    <footer class="footer">
+        <div class="globe"><i class="fa-solid fa-globe"></i></div>
+        <div class="footcopy">
+            <h2>TECCIRA HOLDINGS Platform</h2>
+            <p>Connecting you to a world of possibilities — products, services, and opportunities all in one platform.</p>
+        </div>
+        <a class="learn" href="contact.html">Get In Touch &nbsp;&rarr;</a>
+        <div class="globe"><i class="fa-solid fa-earth-africa"></i></div>
+    </footer>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script>
+        const CART_KEY = "tecciraCart";
+        let cartItems = loadCart();
+        let toastTimer;
+
+        function loadCart() {
+            try {
+                const saved = JSON.parse(localStorage.getItem(CART_KEY) || "[]");
+                return saved.map(item => {
+                    if (typeof item === "string") return { name: item, price: 0, quantity: 1 };
+                    return { name: item.name || "Product", price: Number(item.price) || 0, quantity: Math.max(1, Number(item.quantity) || 1) };
+                });
+            } catch (error) { return []; }
+        }
+
+        function formatMWK(amount) { return "MWK " + Number(amount || 0).toLocaleString("en-US"); }
+
+        function updateCartCount() {
+            const count = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+            const badge = document.getElementById("cartCount");
+            if (badge) badge.textContent = count;
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById("toast");
+            if (!toast) return;
+            toast.textContent = message;
+            toast.classList.add("show");
+            clearTimeout(toastTimer);
+            toastTimer = setTimeout(() => toast.classList.remove("show"), 3200);
+        }
+
+        function openCart() {
+            renderCart();
+            document.getElementById('cartOverlay').classList.add('show');
+            document.getElementById('cartOverlay').setAttribute('aria-hidden', 'false');
+        }
+
+        function closeCart() {
+            document.getElementById('cartOverlay').classList.remove('show');
+            document.getElementById('cartOverlay').setAttribute('aria-hidden', 'true');
+        }
+
+        function renderCart() {
+            const list = document.getElementById('cartItemsList');
+            const totalBox = document.getElementById('cartTotal');
+            if (!list || !totalBox) return;
+            if (cartItems.length === 0) {
+                list.innerHTML = '<div class="cart-empty"><i class="fa-solid fa-cart-shopping" style="font-size:24px; margin-bottom:8px;"></i><p>Your cart is empty.</p><p>Add products from the Shop page to get started.</p></div>';
+            } else {
+                list.innerHTML = cartItems.map((item, index) => `
+                    <div class="cart-item">
+                        <div class="cart-item-info"><strong>${escapeHTML(item.name)}</strong><small>${formatMWK(item.price)} each · Subtotal: ${formatMWK(item.price * item.quantity)}</small></div>
+                        <div class="cart-item-controls">
+                            <button class="qty-btn" type="button" data-action="minus" data-index="${index}" aria-label="Decrease quantity">−</button>
+                            <strong>${item.quantity}</strong>
+                            <button class="qty-btn" type="button" data-action="plus" data-index="${index}" aria-label="Increase quantity">+</button>
+                            <button class="remove-btn" type="button" data-action="remove" data-index="${index}">Remove</button>
+                        </div>
+                    </div>`).join('');
+            }
+            totalBox.textContent = formatMWK(cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0));
+        }
+
+        function escapeHTML(value) {
+            return String(value).replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
+        }
+
+        document.getElementById('cartItemsList').addEventListener('click', event => {
+            const button = event.target.closest('button[data-action]');
+            if (!button) return;
+            const index = Number(button.dataset.index);
+            const item = cartItems[index];
+            if (!item) return;
+            if (button.dataset.action === 'plus') item.quantity += 1;
+            if (button.dataset.action === 'minus') {
+                item.quantity -= 1;
+                if (item.quantity <= 0) cartItems.splice(index, 1);
+            }
+            if (button.dataset.action === 'remove') cartItems.splice(index, 1);
+            localStorage.setItem(CART_KEY, JSON.stringify(cartItems));
+            updateCartCount();
+            renderCart();
+        });
+
+        document.getElementById('cartButton').addEventListener('click', openCart);
+        document.getElementById('cartOverlay').addEventListener('click', event => {
+            if (event.target.id === 'cartOverlay') closeCart();
+        });
+        document.addEventListener('keydown', event => { if (event.key === 'Escape') closeCart(); });
+
+        // Header Account Session Handler
+        const accountButton = document.getElementById('accountButton');
+        const accountDropdown = document.getElementById('accountDropdown');
+        const accountDisplayName = document.getElementById('accountDisplayName');
+        const accountDisplayEmail = document.getElementById('accountDisplayEmail');
+        const loginLink = document.getElementById('loginLink');
+        const logoutButton = document.getElementById('logoutButton');
+
+        function getTecciraSignedInUser() {
+            const savedUser = localStorage.getItem('tecciraUser');
+            if (!savedUser) return null;
+            try {
+                const user = JSON.parse(savedUser);
+                if (!user || typeof user !== 'object') return null;
+                const name = user.name || user.fullName || user.username || (user.identifier ? user.identifier.split('@')[0] : '');
+                const email = user.email || user.identifier || user.emailAddress || '';
+                if (!name && !email) return null;
+                return { name: name || email.split('@')[0], email: email };
+            } catch (error) {
+                return null;
+            }
+        }
+
+        function updateAccountHeader() {
+            const user = getTecciraSignedInUser();
+            if (user) {
+                accountButton.textContent = user.name;
+                accountButton.href = '#';
+                accountButton.setAttribute('aria-expanded', 'false');
+                if (loginLink) loginLink.style.display = 'none';
+                accountDisplayName.textContent = user.name;
+                accountDisplayEmail.textContent = user.email;
+            } else {
+                accountButton.textContent = 'Sign Up';
+                accountButton.href = 'signup.html';
+                accountDropdown.classList.remove('open');
+                accountButton.setAttribute('aria-expanded', 'false');
+                if (loginLink) loginLink.style.display = '';
+            }
+        }
+
+        accountButton.addEventListener('click', event => {
+            if (!getTecciraSignedInUser()) return;
+            event.preventDefault();
+            const isOpen = accountDropdown.classList.toggle('open');
+            accountButton.setAttribute('aria-expanded', String(isOpen));
+        });
+
+        logoutButton.addEventListener('click', () => {
+            localStorage.removeItem('tecciraUser');
+            localStorage.removeItem('tecciraToken');
+            updateAccountHeader();
+            accountDropdown.classList.remove('open');
+            showToast('You have been logged out.');
+        });
+
+        document.addEventListener('click', event => {
+            if (!document.getElementById('accountWrap').contains(event.target)) {
+                accountDropdown.classList.remove('open');
+                accountButton.setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        const menuToggle = document.getElementById('menuToggle');
+        const mainNav = document.getElementById('mainNav');
+        menuToggle.addEventListener('click', () => {
+            const isOpen = mainNav.classList.toggle('open');
+            menuToggle.setAttribute('aria-expanded', String(isOpen));
+            menuToggle.innerHTML = isOpen ? '<i class="fa-solid fa-xmark"></i>' : '<i class="fa-solid fa-bars"></i>';
+        });
+
+        window.addEventListener('storage', event => {
+            if (event.key === 'tecciraUser' || event.key === 'tecciraToken') updateAccountHeader();
+            if (event.key === CART_KEY) { cartItems = loadCart(); updateCartCount(); }
+        });
+
+        window.addEventListener('load', () => {
+            updateAccountHeader();
+            updateCartCount();
+        });
+    </script>
+
+</body>
+</html>
